@@ -267,6 +267,7 @@
     details.section-panel > summary::after { content: "▼"; font-size: 14px; color: var(--primary); transition: transform 0.3s; }
     details.section-panel[open] > summary::after { transform: rotate(180deg); }
     details.section-panel[open] > summary { border-bottom: 1px solid var(--border); }
+    
     /* 資料表格 */
     .data-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
     .data-table th, .data-table td {
@@ -275,7 +276,30 @@
       text-align: left;
     }
     .data-table th { background: var(--bg); color: var(--text-muted); font-size: 14px; }
-    .data-table td { font-size: 16px; }
+    .data-table td { font-size: 16px; vertical-align: top; }
+    
+    /* 姓名區塊呈現 (取代逗號) */
+    .name-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .name-badge {
+      display: inline-block;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 15px;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .ta-badge {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399; /* 較亮的綠色讓名字更清晰 */
+    }
+
     /* 響應式：手機版大幅優化 */
     @media (max-width: 768px) {
       .hero { padding: 24px 16px; }
@@ -336,7 +360,7 @@
         <div><strong>[鞋類規範]</strong> 上課期間勿著拖鞋／涼鞋（營地休息時間除外）。</div>
       </div>
     </section>
-    <!-- 助教表單連結區塊 (新增) -->
+    <!-- 助教表單連結區塊 -->
     <section class="section-panel" id="ta-survey">
       <div class="section-header" style="background-color: rgba(16, 185, 129, 0.1);">
         <h2 style="color: var(--primary);">助教任務與交通調查</h2>
@@ -694,14 +718,14 @@
         </div>
       </div>
     </details>
-    <!-- 分組名單 -->
+    <!-- 分組名單與助教編制 -->
     <details class="section-panel" id="teams">
       <summary>分組名單 (學員與助教編制)</summary>
       <div class="section-body">
         <table class="data-table">
           <thead>
             <tr>
-              <th>組別</th>
+              <th width="90">組別</th>
               <th>學員名單</th>
               <th>負責助教</th>
             </tr>
@@ -709,23 +733,84 @@
           <tbody>
             <tr>
               <td><strong>第 1 組</strong></td>
-              <td>吳則辰,傅傑,黃雨柔,許荷,黃郁雯</td>
-              <td>林孟璇, Joe Fu, Sam Hsiang, 邱小白</td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge">吳則辰</span>
+                  <span class="name-badge">傅傑</span>
+                  <span class="name-badge">黃雨柔</span>
+                  <span class="name-badge">許荷</span>
+                  <span class="name-badge">黃郁雯</span>
+                </div>
+              </td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge ta-badge">林孟璇</span>
+                  <span class="name-badge ta-badge">Joe Fu</span>
+                  <span class="name-badge ta-badge">Sam Hsiang</span>
+                  <span class="name-badge ta-badge">邱小白</span>
+                </div>
+              </td>
             </tr>
             <tr>
               <td><strong>第 2 組</strong></td>
-              <td>周根主,林政穎,陳盈璇,羅鈺潔,林佳璇</td>
-              <td>Jerry Ko, Stella Yao, 林小萬, suzosam</td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge">周根主</span>
+                  <span class="name-badge">林政穎</span>
+                  <span class="name-badge">陳盈璇</span>
+                  <span class="name-badge">羅鈺潔</span>
+                  <span class="name-badge">林佳璇</span>
+                </div>
+              </td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge ta-badge">Jerry Ko</span>
+                  <span class="name-badge ta-badge">Stella Yao</span>
+                  <span class="name-badge ta-badge">林小萬</span>
+                  <span class="name-badge ta-badge">suzosam</span>
+                </div>
+              </td>
             </tr>
             <tr>
               <td><strong>第 3 組</strong></td>
-              <td>林長青,林煥祥,黃心滿,何迎竹,趙雲,陳尹屏</td>
-              <td>hengchia.liang, Tingchun Yeh, hank.wu</td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge">林長青</span>
+                  <span class="name-badge">林煥祥</span>
+                  <span class="name-badge">黃心滿</span>
+                  <span class="name-badge">何迎竹</span>
+                  <span class="name-badge">趙雲</span>
+                  <span class="name-badge">陳尹屏</span>
+                </div>
+              </td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge ta-badge">hengchia.liang</span>
+                  <span class="name-badge ta-badge">Tingchun Yeh</span>
+                  <span class="name-badge ta-badge">hank.wu</span>
+                </div>
+              </td>
             </tr>
             <tr>
               <td><strong>第 4 組</strong></td>
-              <td>李明遠,周泳震,劉奕和,楊淑娥,李杰璇,邱盈琳</td>
-              <td>Akei Wang, 吳啟典, Dennis Hung, 曾嘉怡</td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge">李明遠</span>
+                  <span class="name-badge">周泳震</span>
+                  <span class="name-badge">劉奕和</span>
+                  <span class="name-badge">楊淑娥</span>
+                  <span class="name-badge">李杰璇</span>
+                  <span class="name-badge">邱盈琳</span>
+                </div>
+              </td>
+              <td>
+                <div class="name-grid">
+                  <span class="name-badge ta-badge">Akei Wang</span>
+                  <span class="name-badge ta-badge">吳啟典</span>
+                  <span class="name-badge ta-badge">Dennis Hung</span>
+                  <span class="name-badge ta-badge">曾嘉怡</span>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
