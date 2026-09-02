@@ -191,7 +191,7 @@
       flex-shrink: 0; white-space: nowrap;
     }
     
-    /* ★ 修正 1：刪除原本多餘的逗號，並將 7 和 8 補上 */
+    /* ★ 修正：支援到第 9 個頁籤 */
     #mat1:checked ~ .section-header .label-mat1,
     #mat2:checked ~ .section-header .label-mat2,
     #mat3:checked ~ .section-header .label-mat3,
@@ -199,16 +199,16 @@
     #mat5:checked ~ .section-header .label-mat5,
     #mat6:checked ~ .section-header .label-mat6,
     #mat7:checked ~ .section-header .label-mat7,
-    #mat8:checked ~ .section-header .label-mat8 {
+    #mat8:checked ~ .section-header .label-mat8,
+    #mat9:checked ~ .section-header .label-mat9 {
       background: var(--accent); color: #fff; border-color: var(--accent);
     }
     
-    .view-mat1, .view-mat2, .view-mat3, .view-mat4, .view-mat5, .view-mat6, .view-mat7, .view-mat8 { display: none; padding: 24px 20px; }
+    .view-mat1, .view-mat2, .view-mat3, .view-mat4, .view-mat5, .view-mat6, .view-mat7, .view-mat8, .view-mat9 { display: none; padding: 24px 20px; }
     
-    /* ★ 修正 2：補上點擊 mat7 與 mat8 時的 display: block 控制 */
     #mat1:checked ~ .view-mat1, #mat2:checked ~ .view-mat2, #mat3:checked ~ .view-mat3,
     #mat4:checked ~ .view-mat4, #mat5:checked ~ .view-mat5, #mat6:checked ~ .view-mat6,
-    #mat7:checked ~ .view-mat7, #mat8:checked ~ .view-mat8 { display: block; }
+    #mat7:checked ~ .view-mat7, #mat8:checked ~ .view-mat8, #mat9:checked ~ .view-mat9 { display: block; }
     
     /* 教材內文排版 */
     .view-mat-content ul, .view-mat-content ol { margin-bottom: 16px; font-size: 15px; color: var(--text); padding-left: 24px;}
@@ -624,26 +624,29 @@
 
     <!-- ★ 新增：教材與操作大綱頁籤 ★ -->
     <section class="section-panel" id="materials">
+      <!-- ★ 輸入標籤 (總共 9 個) -->
       <input type="radio" name="mat-tabs" id="mat1">
       <input type="radio" name="mat-tabs" id="mat2">
-      <input type="radio" name="mat-tabs" id="mat3" checked> <!-- 預設開啟雙A帳 -->
-      <input type="radio" name="mat-tabs" id="mat4">
+      <input type="radio" name="mat-tabs" id="mat3"> 
+      <input type="radio" name="mat-tabs" id="mat4" checked> <!-- 預設開啟雙A帳順延至 mat4 -->
       <input type="radio" name="mat-tabs" id="mat5">
       <input type="radio" name="mat-tabs" id="mat6">
       <input type="radio" name="mat-tabs" id="mat7">
       <input type="radio" name="mat-tabs" id="mat8">
+      <input type="radio" name="mat-tabs" id="mat9">
       
       <div class="section-header" style="flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: 8px;">
         <h2>📚 教材大綱與圖文指引</h2>
         <div class="mat-tabs-controller">
           <label for="mat1" class="mat-tab-btn label-mat1">行進用刀</label>
-          <label for="mat2" class="mat-tab-btn label-mat2">營地用刀</label>
-          <label for="mat3" class="mat-tab-btn label-mat3">雙A帳搭設</label>
-          <label for="mat4" class="mat-tab-btn label-mat4">自立營柱帳</label>
-          <label for="mat5" class="mat-tab-btn label-mat5">單斜金字塔</label>
-          <label for="mat6" class="mat-tab-btn label-mat6">生火與復原</label>
-          <label for="mat7" class="mat-tab-btn label-mat7">龍頭講義</label>
-          <label for="mat8" class="mat-tab-btn label-mat8">室內課教材</label>
+          <label for="mat2" class="mat-tab-btn label-mat2">營地整理</label>
+          <label for="mat3" class="mat-tab-btn label-mat3">營地用刀</label>
+          <label for="mat4" class="mat-tab-btn label-mat4">雙A帳搭設</label>
+          <label for="mat5" class="mat-tab-btn label-mat5">自立營柱帳</label>
+          <label for="mat6" class="mat-tab-btn label-mat6">單斜金字塔</label>
+          <label for="mat7" class="mat-tab-btn label-mat7">生火與復原</label>
+          <label for="mat8" class="mat-tab-btn label-mat8">龍頭講義</label>
+          <label for="mat9" class="mat-tab-btn label-mat9">室內課教材</label>
         </div>
       </div>
       
@@ -653,14 +656,20 @@
         <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
       </div>
 
-      <!-- 教材 2：營地用刀 -->
+      <!-- 教材 2：營地整理 (新增) -->
       <div class="view-mat2 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">營地整理</h3>
+        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
+      </div>
+
+      <!-- 教材 3：營地用刀 -->
+      <div class="view-mat3 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">營地用刀</h3>
         <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
       </div>
 
-      <!-- 教材 3：雙A帳搭設 (排版內容) -->
-      <div class="view-mat3 view-mat-content">
+      <!-- 教材 4：雙A帳搭設 -->
+      <div class="view-mat4 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">雙A帳搭設技術</h3>
         
         <h4 style="color:var(--primary);">一、 天幕基礎概念</h4>
@@ -704,8 +713,8 @@
         </ul>
       </div>
 
-      <!-- 教材 4：自立營柱帳搭設 -->
-      <div class="view-mat4 view-mat-content">
+      <!-- 教材 5：自立營柱帳搭設 -->
+      <div class="view-mat5 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">自立營柱帳搭設</h3>
         <p style="color:var(--text-muted);">
           請參考以下連結：<br>
@@ -713,14 +722,14 @@
         </p>
       </div>
 
-      <!-- 教材 5：單斜金字塔搭設 -->
-      <div class="view-mat5 view-mat-content">
+      <!-- 教材 6：單斜金字塔搭設 -->
+      <div class="view-mat6 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">單斜金字塔搭設</h3>
         <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
       </div>
 
-      <!-- 教材 6：生火與復原 (排版內容) -->
-      <div class="view-mat6 view-mat-content">
+      <!-- 教材 7：生火與復原 -->
+      <div class="view-mat7 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">野外生火操作與復原</h3>
         
         <h4 style="color:var(--primary);">一、 核心觀念</h4>
@@ -798,10 +807,8 @@
         </ul>
       </div>
       
-      <!-- ★ 修正 3：移除原本卡在這邊多出來的 </div> -->
-
-      <!-- 教材 7：龍頭講義 -->
-      <div class="view-mat7 view-mat-content">
+      <!-- 教材 8：龍頭講義 -->
+      <div class="view-mat8 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">龍頭講義</h3>
         <p style="color:var(--text-muted);">
           請參考以下連結：<br>
@@ -809,8 +816,8 @@
         </p>
       </div>
 
-      <!-- 教材 8：室內課講義 -->
-      <div class="view-mat8 view-mat-content">
+      <!-- 教材 9：室內課講義 -->
+      <div class="view-mat9 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">室內課講義</h3>
         <p style="color:var(--text-muted);">
           請參考以下連結：<br>
