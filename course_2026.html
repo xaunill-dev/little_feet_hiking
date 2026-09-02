@@ -153,6 +153,7 @@
     .section-header h2 { margin: 0; font-size: 20px; color: #fff; display: flex; align-items: center; gap: 8px;}
     .section-header h2::before { content: ""; display: inline-block; width: 6px; height: 20px; background: var(--primary); border-radius: 4px; }
     .section-body { padding: 20px; }
+    
     /* 切換分頁 (CSS Only) */
     .tabs-controller { display: flex; gap: 8px; }
     .tab-btn {
@@ -166,6 +167,8 @@
       border: 1px solid var(--border);
     }
     input[type="radio"] { display: none; }
+    
+    /* Day Tabs */
     #day1:checked ~ .section-header .label-day1,
     #day2:checked ~ .section-header .label-day2 {
       background: var(--primary);
@@ -175,6 +178,46 @@
     .view-day1, .view-day2 { display: none; }
     #day1:checked ~ .view-day1 { display: block; }
     #day2:checked ~ .view-day2 { display: block; }
+
+    /* Material Tabs (教材分頁) */
+    .mat-tabs-controller { 
+      display: flex; gap: 8px; overflow-x: auto; width: 100%;
+      scrollbar-width: none; padding-bottom: 4px;
+    }
+    .mat-tabs-controller::-webkit-scrollbar { display: none; }
+    .mat-tab-btn {
+      padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer;
+      font-size: 14px; background: var(--bg); color: var(--text-muted); border: 1px solid var(--border);
+      flex-shrink: 0; white-space: nowrap;
+    }
+    
+    /* ★ 修正 1：刪除原本多餘的逗號，並將 7 和 8 補上 */
+    #mat1:checked ~ .section-header .label-mat1,
+    #mat2:checked ~ .section-header .label-mat2,
+    #mat3:checked ~ .section-header .label-mat3,
+    #mat4:checked ~ .section-header .label-mat4,
+    #mat5:checked ~ .section-header .label-mat5,
+    #mat6:checked ~ .section-header .label-mat6,
+    #mat7:checked ~ .section-header .label-mat7,
+    #mat8:checked ~ .section-header .label-mat8 {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    
+    .view-mat1, .view-mat2, .view-mat3, .view-mat4, .view-mat5, .view-mat6, .view-mat7, .view-mat8 { display: none; padding: 24px 20px; }
+    
+    /* ★ 修正 2：補上點擊 mat7 與 mat8 時的 display: block 控制 */
+    #mat1:checked ~ .view-mat1, #mat2:checked ~ .view-mat2, #mat3:checked ~ .view-mat3,
+    #mat4:checked ~ .view-mat4, #mat5:checked ~ .view-mat5, #mat6:checked ~ .view-mat6,
+    #mat7:checked ~ .view-mat7, #mat8:checked ~ .view-mat8 { display: block; }
+    
+    /* 教材內文排版 */
+    .view-mat-content ul, .view-mat-content ol { margin-bottom: 16px; font-size: 15px; color: var(--text); padding-left: 24px;}
+    .view-mat-content li { margin-bottom: 8px; }
+    .view-mat-content li strong { color: #fff; }
+    .view-mat-content h4 { margin-top: 24px; margin-bottom: 12px; font-size: 17px; display: flex; align-items: center; gap: 6px;}
+    .view-mat-content a { color: var(--primary); text-decoration: none; font-weight: 700; }
+    .view-mat-content a:hover { text-decoration: underline; }
+
     /* 行程表 */
     .timeline { width: 100%; border-collapse: collapse; }
     .timeline th {
@@ -204,6 +247,7 @@
     }
     .task-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .task-note { font-size: 15px; color: var(--text-muted); }
+    
     /* 清單與標籤 */
     ul, ol { margin: 0; padding-left: 20px; }
     li { margin-bottom: 6px; }
@@ -219,6 +263,7 @@
     }
     .tag.red { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
     .tag.gray { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
+    
     /* 課程卡片 */
     .course-grid {
       display: grid;
@@ -250,6 +295,7 @@
     @media (min-width: 768px) {
       .course-grid { grid-template-columns: 1fr 1fr; }
     }
+    
     /* 收合面板 (Details) */
     details.section-panel > summary {
       list-style: none;
@@ -278,7 +324,7 @@
     .data-table th { background: var(--bg); color: var(--text-muted); font-size: 14px; }
     .data-table td { font-size: 16px; vertical-align: top; }
     
-    /* 姓名區塊呈現 (取代逗號) */
+    /* 姓名區塊呈現 */
     .name-grid {
       display: flex;
       flex-wrap: wrap;
@@ -297,7 +343,7 @@
     .ta-badge {
       background: rgba(16, 185, 129, 0.08);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399; /* 較亮的綠色讓名字更清晰 */
+      color: #34d399; 
     }
 
     /* 響應式：手機版大幅優化 */
@@ -337,6 +383,7 @@
       <a href="#overview">活動資訊</a>
       <a href="#ta-survey" style="color: var(--primary);">📝 助教填寫</a>
       <a href="#rundown">課程表</a>
+      <a href="#materials" style="color: var(--accent);">📚 教材大綱</a>
       <a href="#course-content">課程細則</a>
       <a href="#teams">分組名單</a>
       <a href="#equipment">裝備清單</a>
@@ -360,6 +407,7 @@
         <div><strong>[鞋類規範]</strong> 上課期間勿著拖鞋／涼鞋（營地休息時間除外）。</div>
       </div>
     </section>
+
     <!-- 助教表單連結區塊 -->
     <section class="section-panel" id="ta-survey">
       <div class="section-header" style="background-color: rgba(16, 185, 129, 0.1);">
@@ -372,6 +420,7 @@
         </a>
       </div>
     </section>
+
     <!-- 核心行程表 -->
     <section class="section-panel" id="rundown">
       <input type="radio" name="day-tabs" id="day1" checked>
@@ -572,9 +621,208 @@
         </table>
       </div>
     </section>
+
+    <!-- ★ 新增：教材與操作大綱頁籤 ★ -->
+    <section class="section-panel" id="materials">
+      <input type="radio" name="mat-tabs" id="mat1">
+      <input type="radio" name="mat-tabs" id="mat2">
+      <input type="radio" name="mat-tabs" id="mat3" checked> <!-- 預設開啟雙A帳 -->
+      <input type="radio" name="mat-tabs" id="mat4">
+      <input type="radio" name="mat-tabs" id="mat5">
+      <input type="radio" name="mat-tabs" id="mat6">
+      <input type="radio" name="mat-tabs" id="mat7">
+      <input type="radio" name="mat-tabs" id="mat8">
+      
+      <div class="section-header" style="flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: 8px;">
+        <h2>📚 教材大綱與圖文指引</h2>
+        <div class="mat-tabs-controller">
+          <label for="mat1" class="mat-tab-btn label-mat1">行進用刀</label>
+          <label for="mat2" class="mat-tab-btn label-mat2">營地用刀</label>
+          <label for="mat3" class="mat-tab-btn label-mat3">雙A帳搭設</label>
+          <label for="mat4" class="mat-tab-btn label-mat4">自立營柱帳</label>
+          <label for="mat5" class="mat-tab-btn label-mat5">單斜金字塔</label>
+          <label for="mat6" class="mat-tab-btn label-mat6">生火與復原</label>
+          <label for="mat7" class="mat-tab-btn label-mat7">龍頭講義</label>
+          <label for="mat8" class="mat-tab-btn label-mat8">室內課教材</label>
+        </div>
+      </div>
+      
+      <!-- 教材 1：行進用刀 -->
+      <div class="view-mat1 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">行進用刀</h3>
+        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
+      </div>
+
+      <!-- 教材 2：營地用刀 -->
+      <div class="view-mat2 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">營地用刀</h3>
+        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
+      </div>
+
+      <!-- 教材 3：雙A帳搭設 (排版內容) -->
+      <div class="view-mat3 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">雙A帳搭設技術</h3>
+        
+        <h4 style="color:var(--primary);">一、 天幕基礎概念</h4>
+        <ul>
+          <li><strong>目的：</strong>使用最少的裝備，以最安全的方式度過一晚。</li>
+          <li><strong>容量與數量：</strong>一張 3x3 天幕約可睡 2-4 人，課程出隊通常至少準備 2 張。</li>
+          <li><strong>搭設順序：</strong>使用 2 張天幕時，需先從「地勢較低」處搭起，再覆蓋另一張天幕，以免下雨時水流進帳內。</li>
+        </ul>
+
+        <h4 style="color:var(--primary);">二、 主繩搭設</h4>
+        <p style="color:var(--text-muted); font-size:14px; margin-top:-10px; margin-bottom:12px; padding-left:24px;">（建議約 130-140 公分，避免帳內坐下時頭撞到主繩）</p>
+        <ol>
+          <li><strong>一般 1/3 省力系統：</strong>
+            <ul style="margin-top:8px;">
+              <li><strong>起點：</strong>在第一個固定點打「栓馬結」。</li>
+              <li><strong>拉緊：</strong>將繩拉向第二固定點，抓好距離後利用「大D扣環」纏繞 4-5 圈拉緊（需使用傘布保護樹木）。</li>
+              <li><strong>收尾：</strong>將剩餘繩子盡量靠近固定點進行雙股纏繞，不要壓繩，最後夾繩收尾並將餘繩收好。</li>
+            </ul>
+          </li>
+          <li><strong>改變方向的 1/3 省力系統：</strong>
+            <ul style="margin-top:8px;">
+              <li><strong>時機：</strong>沒有適當支點或不夠舒適時，用來改變方向以爭取較佳營地空間。</li>
+              <li><strong>作法：</strong>需 3 個支點。從固定點1（栓馬結）將繩拉向固定點2（大D纏繞），再轉向拉往固定點3（大D纏繞），會形成一個 <strong>Y 字型</strong>，最後一樣雙股纏繞夾繩收尾。</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h4 style="color:var(--primary);">三、 四種帳型搭設技巧</h4>
+        <ul>
+          <li><strong>A字帳：</strong>將外帳鋪在主繩上，兩邊在鴿眼處打「普魯士結」固定於主線上（防拉扯跑位），接著由隊友各自以 45 度向內打入營釘拉撐。</li>
+          <li><strong>雙A帳（主要睡帳）：</strong>使用 2 張天幕，相交處須<strong>「重疊至少 30 公分」</strong>。一邊打普魯士結固定，重疊處則先在鴿眼打「栓馬結」，穿過另一張天幕的鴿眼後再打上「營繩結」以利調整，最後 45 度向內下釘。</li>
+          <li><strong>ㄏ字帳（炊煮與短暫休息用）：</strong>睡前活動時搭設，開口方向請勿迎風，以免太冷。</li>
+          <li><strong>自立支柱（無固定點時使用登山杖）：</strong>將登山杖穿過鴿眼並以纏繞方式與天幕固定，兩端朝 45 度方向拉好下釘。天幕兩端先在鴿眼打栓馬結，找到固定點後打營繩結調整拉撐。</li>
+        </ul>
+
+        <h4 style="color:var(--primary);">四、 其他注意事項</h4>
+        <ul>
+          <li><strong>中央帳高過低處置：</strong>以登山杖撐高，並利用營繩將登山杖及主繩固定。</li>
+          <li><strong>截水繩：</strong>主繩兩端務必繫上截水繩。天幕拉撐後若有下垂，下雨時雨水易順主繩流入帳內，截水繩可有效減少雨水流入。</li>
+          <li><strong>低窪處搭設：</strong>天幕外側挖設導流道，讓雨水順勢繞開。</li>
+        </ul>
+      </div>
+
+      <!-- 教材 4：自立營柱帳搭設 -->
+      <div class="view-mat4 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">自立營柱帳搭設</h3>
+        <p style="color:var(--text-muted);">
+          請參考以下連結：<br>
+          <a href="https://drive.google.com/file/d/1a9gfQ7DiyuTKLD9OR2larQbewpxD-4WS/view?usp=sharing" target="_blank">點擊前往查看 ↗</a>
+        </p>
+      </div>
+
+      <!-- 教材 5：單斜金字塔搭設 -->
+      <div class="view-mat5 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">單斜金字塔搭設</h3>
+        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
+      </div>
+
+      <!-- 教材 6：生火與復原 (排版內容) -->
+      <div class="view-mat6 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">野外生火操作與復原</h3>
+        
+        <h4 style="color:var(--primary);">一、 核心觀念</h4>
+        <ul>
+          <li><strong>生火三元素：</strong>溫度、空氣（氧氣對流）、燃料。</li>
+          <li><strong>準備三步驟：</strong>找柴、分柴、架柴。</li>
+        </ul>
+
+        <h4 style="color:var(--primary);">二、 步驟一：找柴</h4>
+        <ul>
+          <li><strong>實用工具：</strong>手套（保護）、鋸刀（處理）、繩子（綑綁）。</li>
+          <li><strong>辨識乾燥：</strong>折斷枯枝時有清脆斷裂聲。</li>
+          <li><strong>雨天找柴訣竅：</strong>
+            <ul style="margin-top:8px;">
+              <li>避開林間地面落葉與樹幹基部的木柴。</li>
+              <li><strong>抬頭找：</strong>尋找樹林與天空交界縫隙正下方的枯枝。</li>
+              <li><strong>找樹上：</strong>折取仍連在樹幹上的枯枝，通常內部仍乾燥。</li>
+              <li><strong>找粗木：</strong>蒐集直徑 > 6公分的粗木，削去濕皮取乾燥內部做火媒棒。</li>
+            </ul>
+          </li>
+          <li><strong>柴火保護：</strong>使用大樹葉或樹皮替木柴擋雨。</li>
+        </ul>
+
+        <h4 style="color:var(--primary);">三、 步驟二：分柴</h4>
+        <p style="color:var(--text-muted); font-size:14px; margin-top:-10px; margin-bottom:12px; padding-left:24px;">目的：集中管理，推估燃料是否足夠整晚使用。</p>
+        <ul>
+          <li><strong>依「易燃性」分類：</strong>
+            <ul style="margin-top:8px;">
+              <li><strong>軟木（松、杉等）：</strong>易燃、富油脂，作初期燃料，餘炭少。</li>
+              <li><strong>硬木（相思、櫟等）：</strong>不易燃、火力大且持久，作基本燃料。</li>
+            </ul>
+          </li>
+          <li><strong>依「粗細」分類：</strong>
+            <ul style="margin-top:8px;">
+              <li><strong>火種：</strong>乾草、乾芒花、火煤棒。</li>
+              <li><strong>發火材：</strong>遇火苗即迅速燃燒（松針、木屑等）。</li>
+              <li><strong>引火材（一級）：</strong>約筆芯粗（直徑 0.2~0.5公分）。</li>
+              <li><strong>引火材（二級）：</strong>約筆粗（直徑 1~1.5公分）。</li>
+              <li><strong>引火材（三級）：</strong>約童軍棍粗（直徑 3公分）。</li>
+              <li><strong>燃燒材：</strong>直徑大於 3公分。</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4 style="color:var(--primary);">四、 步驟三：架柴與點火</h4>
+        <ul>
+          <li><strong>常見形式：</strong>金字塔型、獵人灶型、井字型。</li>
+          <li><strong>架柴 5 原則：</strong>
+            <ol style="margin-top:8px;">
+              <li>避開草地，必要時須挖走草皮，事後滅跡堆回。</li>
+              <li>確實整地，清除周邊易燃物防延燒。</li>
+              <li>確定風向，預留通風與點火位置。</li>
+              <li>由細到粗，以足量發火柴與引火柴為基底。</li>
+              <li><strong>務必墊高離地：</strong>用石頭、粗木或樹皮當基座，避開地面濕氣。</li>
+            </ol>
+          </li>
+          <li><strong>點火成功關鍵：</strong>
+            <ul style="margin-top:8px;">
+              <li>勿過度拘泥堆疊形狀而浪費時間。</li>
+              <li>取火絨、發火柴與引火柴準備必須「足量」。</li>
+              <li><strong>足量標準：</strong>雙手拇指與中指互碰時，能一起抱握住的數量。</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4 style="color:var(--primary);">五、 滅火與復原</h4>
+        <ul>
+          <li><strong>安全：</strong>木炭灰燼溫度高，嚴禁直接潑水，以免灰燼或蒸氣燙傷。</li>
+          <li><strong>環保：</strong>落實 LNT（無痕山林）原則，將場地恢復原狀。</li>
+        </ul>
+
+        <h4 style="color:var(--primary);">六、 火媒棒、火種製作</h4>
+        <ul>
+          <li><span style="color:var(--text-muted);">此實作項目請參照課程現場刀具運用與削製角度示範。</span></li>
+        </ul>
+      </div>
+      
+      <!-- ★ 修正 3：移除原本卡在這邊多出來的 </div> -->
+
+      <!-- 教材 7：龍頭講義 -->
+      <div class="view-mat7 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">龍頭講義</h3>
+        <p style="color:var(--text-muted);">
+          請參考以下連結：<br>
+          <a href="https://drive.google.com/file/d/1Q52XUGWQEl0h37RQb1xg0v3cj4LwfseC/view?usp=sharing" target="_blank">點擊前往查看 ↗</a>
+        </p>
+      </div>
+
+      <!-- 教材 8：室內課講義 -->
+      <div class="view-mat8 view-mat-content">
+        <h3 style="color:var(--accent); margin-top:0;">室內課講義</h3>
+        <p style="color:var(--text-muted);">
+          請參考以下連結：<br>
+          <a href="https://drive.google.com/file/d/1wfSpr1BRVlmfR0QROIKa0AO7GoM0VsCf/view?usp=sharing" target="_blank">點擊前往查看 ↗</a>
+        </p>
+      </div>
+
+    </section>
+
     <!-- 課程目標大綱與執行細則 -->
-    <details class="section-panel" id="course-content" open>
-      <summary>課程大綱與執行細則</summary>
+    <details class="section-panel" id="course-content">
+      <summary>教案大綱與執行細則</summary>
       <div class="section-body">
         <ul style="margin-bottom: 20px;">
           <li><span class="tag gray">輕量化</span>檢視各裝備的重要性及重量。</li>
@@ -718,6 +966,7 @@
         </div>
       </div>
     </details>
+
     <!-- 分組名單與助教編制 -->
     <details class="section-panel" id="teams">
       <summary>分組名單 (學員與助教編制)</summary>
@@ -816,6 +1065,7 @@
         </table>
       </div>
     </details>
+
     <!-- 裝備清單 -->
     <details class="section-panel" id="equipment">
       <summary>裝備規範與清單</summary>
@@ -854,6 +1104,7 @@
         <p style="color:var(--text-muted); font-size:14px; margin-top:16px;">註：以上藍底/必備項目為課程操作需使用裝備，如有替代物品請提前與教官/助教討論。</p>
       </div>
     </details>
+
     <!-- 伙食規定 -->
     <details class="section-panel" id="meals">
       <summary>伙食規定</summary>
@@ -894,6 +1145,7 @@
         </table>
       </div>
     </details>
+
     <!-- 測驗項目 -->
     <details class="section-panel" id="tests">
       <summary>測驗項目</summary>
