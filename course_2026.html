@@ -191,7 +191,6 @@
       flex-shrink: 0; white-space: nowrap;
     }
     
-    /* ★ 修正：支援到第 9 個頁籤 */
     #mat1:checked ~ .section-header .label-mat1,
     #mat2:checked ~ .section-header .label-mat2,
     #mat3:checked ~ .section-header .label-mat3,
@@ -248,7 +247,7 @@
     .task-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .task-note { font-size: 15px; color: var(--text-muted); }
     
-    /* ★ 助教注意事項專屬樣式 ★ */
+    /* 助教注意事項專屬樣式 */
     .ta-alert {
       margin-top: 10px;
       padding: 10px 12px;
@@ -282,6 +281,17 @@
     }
     .tag.red { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
     .tag.gray { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
+
+    /* ★ 必備項目藍色標記 ★ */
+    .item-blue {
+      display: inline-block;
+      color: #38bdf8;
+      font-weight: 800;
+      background: rgba(56, 189, 248, 0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin: 2px 0;
+    }
     
     /* 課程卡片 */
     .course-grid {
@@ -341,7 +351,7 @@
       text-align: left;
     }
     .data-table th { background: var(--bg); color: var(--text-muted); font-size: 14px; }
-    .data-table td { font-size: 16px; vertical-align: top; }
+    .data-table td { font-size: 16px; vertical-align: top; line-height: 1.8; }
     
     /* 姓名區塊呈現 */
     .name-grid {
@@ -666,7 +676,7 @@
       </div>
     </section>
 
-    <!-- ★ 新增：教材與操作大綱頁籤 ★ -->
+    <!-- ★ 教材與操作大綱頁籤 ★ -->
     <section class="section-panel" id="materials">
       <!-- ★ 輸入標籤 (總共 9 個) -->
       <input type="radio" name="mat-tabs" id="mat1">
@@ -700,7 +710,7 @@
         <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
       </div>
 
-      <!-- 教材 2：營地整理 (新增) -->
+      <!-- 教材 2：營地整理 -->
       <div class="view-mat2 view-mat-content">
         <h3 style="color:var(--accent); margin-top:0;">營地整理</h3>
         <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
@@ -1117,8 +1127,8 @@
       </div>
     </details>
 
-    <!-- 裝備清單 -->
-    <details class="section-panel" id="equipment">
+    <!-- ★ 裝備清單 ★ -->
+    <details class="section-panel" id="equipment" open>
       <summary>裝備規範與清單</summary>
       <div class="section-body">
         <h3 style="color:var(--primary); margin-top:0;">學員必帶裝備</h3>
@@ -1132,19 +1142,45 @@
           <tbody>
             <tr>
               <td><strong>個人基本裝備</strong></td>
-              <td>頭燈, 岩盔, 兩節式雨衣, 刁山包, 備用/保暖衣物, 工作手套, 指北針, 地圖, 醫藥/盥洗用品, 跑步鞋/跑步服</td>
+              <td>
+                <span class="item-blue">頭燈</span>, 
+                <span class="item-blue">岩盔</span>, 
+                <span class="item-blue">兩節式雨衣</span>, 
+                <span class="item-blue">刁山包</span>, 
+                備用/保暖衣物, 工作手套, 
+                <span class="item-blue">指北針</span>, 
+                <span class="item-blue">地圖</span>, 
+                醫藥/盥洗用品, 跑步鞋/跑步服
+              </td>
             </tr>
             <tr>
               <td><strong>刀/鋸/生火</strong></td>
-              <td>刀, 鋸, 打火機, 扇子/吹管, 火種</td>
+              <td>
+                <span class="item-blue">刀</span>, 
+                <span class="item-blue">鋸</span>, 
+                打火機, 扇子/吹管, 火種
+              </td>
             </tr>
             <tr>
               <td><strong>炊煮</strong></td>
-              <td>水袋/儲水容器(至少2L), 登山爐具, 瓦斯, 鍋具, 餐具, 白米飯, 團炊用具</td>
+              <td>
+                水袋/儲水容器(至少2L), 
+                <span class="item-blue">登山爐具</span>, 
+                <span class="item-blue">瓦斯</span>, 
+                鍋具, 餐具, 
+                <span class="item-blue">白米飯</span>, 
+                團炊用具
+              </td>
             </tr>
             <tr>
               <td><strong>搭帳</strong></td>
-              <td>登山杖, 外帳（2M×3M+）, 輔助繩(6~8mm* 10M+), 營繩釘, 勾環(大D*2), 地布, 大黑塑膠袋*2</td>
+              <td>
+                <span class="item-blue">登山杖</span>, 
+                <span class="item-blue">外帳（2M×3M+）</span>, 
+                <span class="item-blue">輔助繩(6~8mm* 10M+)</span>, 
+                營繩釘, 勾環(大D*2), 地布, 
+                <span class="item-blue">大黑塑膠袋*2</span>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -1152,7 +1188,9 @@
         <ul>
           <li><strong>通訊設備：</strong>每一組分配一台無線電，由該組助教攜帶。</li>
         </ul>
-        <p style="color:var(--text-muted); font-size:14px; margin-top:16px;">註：以上藍底/必備項目為課程操作需使用裝備，如有替代物品請提前與教官/助教討論。</p>
+        <p style="color:var(--text-muted); font-size:14px; margin-top:16px;">
+          註：以上<span class="item-blue">藍底字體</span>為課程操作必備項目，如有替代物品請提前與教官/助教討論。
+        </p>
       </div>
     </details>
 
