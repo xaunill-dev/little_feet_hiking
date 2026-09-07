@@ -247,7 +247,7 @@
     .task-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .task-note { font-size: 15px; color: var(--text-muted); }
     
-    /* 助教注意事項專屬樣式 */
+    /* ★ 助教注意事項專屬樣式 ★ */
     .ta-alert {
       margin-top: 10px;
       padding: 10px 12px;
@@ -266,6 +266,17 @@
       letter-spacing: 0.05em;
     }
 
+    /* 藍色必備標籤 */
+    .item-blue {
+      display: inline-block;
+      color: #38bdf8;
+      font-weight: 800;
+      background: rgba(56, 189, 248, 0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin: 2px 0;
+    }
+
     /* 清單與標籤 */
     ul, ol { margin: 0; padding-left: 20px; }
     li { margin-bottom: 6px; }
@@ -281,17 +292,6 @@
     }
     .tag.red { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
     .tag.gray { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
-
-    /* ★ 必備項目藍色標記 ★ */
-    .item-blue {
-      display: inline-block;
-      color: #38bdf8;
-      font-weight: 800;
-      background: rgba(56, 189, 248, 0.15);
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin: 2px 0;
-    }
     
     /* 課程卡片 */
     .course-grid {
@@ -351,7 +351,7 @@
       text-align: left;
     }
     .data-table th { background: var(--bg); color: var(--text-muted); font-size: 14px; }
-    .data-table td { font-size: 16px; vertical-align: top; line-height: 1.8; }
+    .data-table td { font-size: 16px; vertical-align: top; }
     
     /* 姓名區塊呈現 */
     .name-grid {
@@ -421,8 +421,10 @@
     </div>
   </nav>
   <main class="container">
-    <!-- 活動基本資訊 -->
+    
+    <!-- ★ 更新：活動基本資訊與規範 ★ -->
     <section id="overview">
+      <h3 style="color:var(--primary); margin-top: 0; margin-bottom: 12px;">活動資訊概覽</h3>
       <div class="summary-grid">
         <div class="data-card"><span>日期</span><strong>09/19 – 09/20</strong></div>
         <div class="data-card"><span>集合時間</span><strong>07:30</strong></div>
@@ -430,10 +432,27 @@
         <div class="data-card"><span>人員編制</span><strong>22 學員 / 15 助教</strong></div>
         <div class="data-card"><span>基地座標</span><strong>TWD97: 297555, 2750766</strong></div>
       </div>
+
+      <!-- 新增：小腳丫登山規範 -->
+      <h3 style="color:var(--accent); margin-top: 32px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+        ⚠️ 在開始前：小腳丫登山規範
+      </h3>
+      <div class="summary-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));">
+        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>同進同出</strong></div>
+        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>回望等待</strong></div>
+        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>遵守紀律</strong></div>
+        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>團結合作</strong></div>
+        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>最弱隊友原則</strong></div>
+      </div>
+
+      <!-- 更新：戶外課須知 -->
+      <h3 style="color:var(--primary); margin-top: 32px; margin-bottom: 16px;">宿營實務：戶外課須知</h3>
       <div class="alert-box">
-        <div><strong>[限重規定]</strong> 背包限重 9kg 以內（不含飲用水），集合時測量。</div>
-        <div><strong>[嚴格禁止]</strong> 睡袋、睡墊、露宿袋、暖暖包。</div>
-        <div><strong>[鞋類規範]</strong> 上課期間勿著拖鞋／涼鞋（營地休息時間除外）。</div>
+        <div><strong>[基本守則]</strong> 內容是以「訓練」為目的設計，請依教案說明準備，並配合教官/助教指示。</div>
+        <div><strong>[安全規定]</strong> 上課期間需戴岩盔，不可穿如：拖(涼)鞋等未包指鞋款。</div>
+        <div><strong>[裝備限重]</strong> &lt; 9kg。不含：山(草)刀 / 登山杖 / 飲用水。其餘裝備與食材(個人/團炊)皆須納入重量計算。</div>
+        <div><strong>[禁用裝備]</strong> 嚴格禁止睡袋、睡墊、露宿袋、暖暖包。</div>
+        <div><strong>[教務規範]</strong> 如有違上述並經教務夥伴提醒仍不願配合者，本課程視為「未完成」。</div>
       </div>
     </section>
 
@@ -608,7 +627,8 @@
             <tr>
               <td><span class="time-badge">09:30 – 10:00</span></td>
               <td><div class="task-title">移動</div></td>
-              <td class="task-note">至下一個操課場地</td>
+              <!-- ★ 更新：操課場地座標 ★ -->
+              <td class="task-note">至下一個操課場地 (TWD97: 297531, 2751116)</td>
             </tr>
             <tr>
               <td><span class="time-badge">10:00 – 10:30</span></td>
@@ -676,13 +696,12 @@
       </div>
     </section>
 
-    <!-- ★ 教材與操作大綱頁籤 ★ -->
+    <!-- 教材與操作大綱頁籤 -->
     <section class="section-panel" id="materials">
-      <!-- ★ 輸入標籤 (總共 9 個) -->
       <input type="radio" name="mat-tabs" id="mat1">
       <input type="radio" name="mat-tabs" id="mat2">
       <input type="radio" name="mat-tabs" id="mat3"> 
-      <input type="radio" name="mat-tabs" id="mat4" checked> <!-- 預設開啟雙A帳順延至 mat4 -->
+      <input type="radio" name="mat-tabs" id="mat4" checked>
       <input type="radio" name="mat-tabs" id="mat5">
       <input type="radio" name="mat-tabs" id="mat6">
       <input type="radio" name="mat-tabs" id="mat7">
@@ -1127,7 +1146,7 @@
       </div>
     </details>
 
-    <!-- ★ 裝備清單 ★ -->
+    <!-- 裝備清單 -->
     <details class="section-panel" id="equipment" open>
       <summary>裝備規範與清單</summary>
       <div class="section-body">
@@ -1272,8 +1291,14 @@
         </table>
       </div>
     </details>
+
+    <!-- ★ 新增：平安下山標語 ★ -->
+    <div style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px dashed var(--border); border-radius: 8px; text-align: center; background: var(--surface);">
+      <p style="margin:0; font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: 0.1em;">🌲 安全第一、平安下山！</p>
+    </div>
+
   </main>
-  <footer style="text-align:center; padding: 40px 20px; color:var(--border);">
+  <footer style="text-align:center; padding: 0 20px 40px 20px; color:var(--border);">
     小腳丫登山訓練營 2026 宿營實務戶外課｜助教專用執行手冊
   </footer>
 </body>
