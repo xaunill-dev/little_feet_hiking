@@ -60,7 +60,7 @@
     }
     
     * { box-sizing: border-box; }
-    
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background-color: var(--app-bg);
@@ -76,7 +76,7 @@
       transition: background-color 0.3s ease;
     }
 
-    /* ================= 控制按鈕群組 ================= */
+    /* ================= 控制按鈕群組 (右上角) ================= */
     .top-controls {
       position: fixed;
       top: 20px;
@@ -91,12 +91,11 @@
       border: 1px solid var(--border);
       padding: 10px 16px;
       border-radius: 30px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 6px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: all 0.2s ease;
@@ -107,25 +106,84 @@
       color: var(--title-color);
     }
 
+    /* ================= 浮動導覽選單 (目錄面板) ================= */
+    .nav-panel {
+      position: fixed;
+      top: 70px;
+      right: 25px;
+      z-index: 998;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      width: 200px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transform: translateX(120%);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    .nav-panel.open {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      color: var(--title-color);
+      font-size: 16px;
+      font-weight: 800;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .close-nav {
+      background: transparent; border: none; color: var(--text-muted); cursor: pointer; font-size: 18px; line-height: 1; padding: 0 4px;
+    }
+    .close-nav:hover { color: var(--danger); }
+    .nav-links { display: flex; flex-direction: column; gap: 4px; }
+    .nav-links a {
+      color: var(--text); text-decoration: none; font-size: 14.5px; font-weight: 700; padding: 8px 12px; border-radius: 6px; transition: background 0.2s;
+    }
+    .nav-links a:hover { background: var(--surface-light); color: var(--accent); }
+
     /* ================= 助教版切換核心 (CSS 隱藏標籤) ================= */
     .ta-only { display: none !important; }
     body.is-ta-mode .ta-only { display: block !important; }
     body.is-ta-mode tr.ta-only { display: table-row !important; }
     body.is-ta-mode th.ta-only, body.is-ta-mode td.ta-only { display: table-cell !important; }
 
-    /* ================= 響應式 A4 容器設定 ================= */
+    /* ================= A4 單頁容器設定 ================= */
     .a4-page {
-      width: 100%;
-      max-width: 210mm; /* 限制最大寬度為A4 */
-      min-height: 297mm; /* 預設保留A4比例 */
+      width: 210mm;
+      height: 297mm;
       background-color: var(--bg);
       position: relative;
-      overflow: visible; /* 防止行動版內容被裁切 */
+      overflow: hidden;
       box-shadow: var(--page-shadow);
-      padding: 20mm 15mm 25mm 15mm; /* 底部多留空間給 Footer */
-      border-radius: 8px;
+      padding: 20mm 15mm;
       transition: background-color 0.3s ease, color 0.3s ease;
+      scroll-margin-top: 20px; /* 錨點跳轉時的緩衝高度 */
     }
+
+    /* 支援助教版捲動式長文區塊 */
+    .section-panel {
+      width: 210mm;
+      background: var(--bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+      overflow: hidden;
+      box-shadow: var(--page-shadow);
+      padding: 20mm 15mm;
+      scroll-margin-top: 20px;
+    }
+    .section-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; background: var(--surface-light); border-bottom: 1px solid var(--border); }
+    .section-header h2 { margin: 0; font-size: 20px; color: var(--title-color); display: flex; align-items: center; gap: 8px;}
+    .section-header h2::before { content: ""; display: inline-block; width: 6px; height: 20px; background: var(--primary); border-radius: 4px; }
+    .section-body { padding: 20px; }
 
     /* 教材頁籤與課程細則專用樣式 */
     .tabs-controller { display: flex; gap: 8px; }
@@ -155,32 +213,12 @@
     @media (min-width: 768px) { .course-grid { grid-template-columns: 1fr 1fr; } }
 
     /* ================= 頂部標題區 ================= */
-    .header-hero {
-      background: var(--hero-bg);
-      border-left: 6px solid var(--primary);
-      padding: 24px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-      border: 1px solid var(--border);
-      border-left-width: 6px;
-    }
+    .header-hero { background: var(--hero-bg); border-left: 6px solid var(--primary); padding: 24px; border-radius: 6px; margin-bottom: 24px; border: 1px solid var(--border); border-left-width: 6px; }
     .header-hero h1 { margin: 0 0 6px; font-size: 26px; font-weight: 800; color: var(--title-color); letter-spacing: 0.05em; }
     .header-hero p { margin: 0; color: var(--primary); font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; }
 
     /* ================= 頁面標題 ================= */
-    .page-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--title-color);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 0;
-      margin-bottom: 16px;
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 8px;
-      letter-spacing: 0.02em;
-    }
+    .page-title { font-size: 20px; font-weight: 800; color: var(--title-color); display: flex; align-items: center; gap: 10px; margin-top: 0; margin-bottom: 16px; border-bottom: 2px solid var(--border); padding-bottom: 8px; letter-spacing: 0.02em; }
     .page-title::before { content: ""; display: block; width: 5px; height: 20px; background: var(--primary); border-radius: 2px; }
 
     .title-important { color: var(--accent); border-bottom-color: rgba(245, 158, 11, 0.3); }
@@ -198,8 +236,6 @@
     .data-card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--primary); padding: 14px; border-radius: 6px; }
     .data-card span { display: block; color: var(--text-muted); font-size: 12.5px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
     .data-card strong { display: block; font-size: 16.5px; color: var(--title-color); }
-    .card-center { text-align: center; padding: 14px 8px; }
-    .card-center strong { font-size: 15px; }
     
     /* ================= 警告區塊 ================= */
     .alert-box { display: flex; flex-direction: column; gap: 10px; background: var(--important-bg); border: 1px solid var(--important-border); border-left: 4px solid var(--accent); padding: 16px; border-radius: 6px; margin-bottom: 24px; font-size: 15px; line-height: 1.6; color: var(--title-color); }
@@ -245,79 +281,47 @@
 
     /* ================= 📱 手機 RWD 響應式優化 ================= */
     @media (max-width: 768px) {
-      body {
-        padding: 10px 10px 80px 10px; /* 底部保留按鈕空間 */
-        gap: 15px;
-        font-size: 16.5px;
-      }
-      .a4-page {
-        padding: 20px 15px 60px 15px; /* 移除固定的 A4 高度，讓內容順排 */
-        min-height: auto;
-        border-radius: 12px;
-      }
+      body { padding: 10px 10px 80px 10px; gap: 15px; font-size: 16.5px; }
+      .a4-page, .section-panel { padding: 20px 15px 60px 15px; min-height: auto; border-radius: 12px; }
       
-      /* 將原本的多欄位壓縮成 2 欄 */
       .summary-grid, .summary-grid-5 { grid-template-columns: 1fr 1fr; gap: 10px;}
       .summary-grid-5 .data-card:last-child { grid-column: span 2; }
       
-      /* 行程表 RWD 轉換為卡片堆疊 */
+      /* 行程表 RWD 轉換 */
       .timeline thead { display: none; }
       .timeline, .timeline tbody, .timeline tr, .timeline td { display: block; width: 100%; }
-      .timeline tr {
-        background: var(--surface);
-        margin-bottom: 16px;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        padding: 16px;
-      }
+      .timeline tr { background: var(--surface); margin-bottom: 16px; border-radius: 8px; border: 1px solid var(--border); padding: 16px; }
       .timeline td { padding: 0 0 10px 0; border: none; }
       .timeline td:last-child { padding-bottom: 0; }
       .time-badge { font-size: 14.5px; padding: 6px 12px; margin-bottom: 4px;}
       .task-title { font-size: 19px; margin-bottom: 6px; }
       .task-note { font-size: 16px; line-height: 1.6; }
 
-      /* 表格 RWD 轉換為卡片堆疊 */
+      /* 表格 RWD 轉換 */
       .data-table thead { display: none; }
       .data-table, .data-table tbody, .data-table tr, .data-table td { display: block; width: 100%; }
-      .data-table tr {
-        background: var(--surface);
-        margin-bottom: 16px;
-        border-radius: 8px;
-        border: 1px solid var(--border);
-        padding: 16px;
-      }
+      .data-table tr { background: var(--surface); margin-bottom: 16px; border-radius: 8px; border: 1px solid var(--border); padding: 16px; }
       .data-table td { padding: 6px 0; border: none; font-size: 16px;}
       .data-table td:first-child { font-weight: 800; color: var(--accent); font-size: 18px; border-bottom: 1px dashed var(--border); margin-bottom: 8px; padding-bottom: 10px;}
 
-      /* 頁尾位置還原為相對排版 */
-      .page-footer {
-        position: relative;
-        bottom: auto; left: auto; right: auto;
-        margin-top: 20px;
-        padding-top: 15px;
-      }
+      .page-footer { position: relative; bottom: auto; left: auto; right: auto; margin-top: 20px; padding-top: 15px; }
 
-      /* 懸浮按鈕移至右下角，適合手機單手點擊 */
-      .top-controls {
-        top: auto;
-        bottom: 20px;
-        right: 15px;
-        flex-direction: column-reverse;
-      }
-      .control-btn {
-        width: 52px;
-        height: 52px;
-        border-radius: 50%;
-        padding: 0;
-        justify-content: center;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      }
+      /* 手機版：懸浮按鈕移至右下角 */
+      .top-controls { top: auto; bottom: 20px; right: 15px; flex-direction: column-reverse; }
+      .control-btn { width: 52px; height: 52px; border-radius: 50%; padding: 0; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
       .control-btn .btn-text { display: none; }
       .control-btn .btn-icon { font-size: 20px; }
+
+      /* 手機版：選單面板從左下彈出 */
+      .nav-panel { top: auto; bottom: 20px; left: 15px; right: auto; transform: translateX(-120%); }
+      .nav-panel.open { transform: translateX(0); }
     }
 
-    /* ================= 🖨️ PDF 匯出 / 列印最佳化 ================= */
+    /* ================= 🖨️ PDF 匯出 / 列印最佳化 (重點！) ================= */
     @media print {
+      /* 強制純淨模式 */
+      .top-controls, .nav-panel { display: none !important; }
+      
       :root {
         --bg: #ffffff !important;
         --surface: #f8fafc !important;
@@ -330,9 +334,7 @@
       }
       body { color: #334155; background: #fff !important; font-size: 11pt; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; padding: 0; margin: 0; display: block; }
       
-      .top-controls { display: none !important; }
-      
-      .a4-page {
+      .a4-page, .section-panel {
         width: 210mm !important;
         height: 297mm !important;
         min-height: 297mm !important;
@@ -340,6 +342,7 @@
         margin: 0 !important;
         padding: 20mm 15mm 20mm 15mm !important;
         page-break-after: always;
+        border: none !important;
       }
       
       .hero { color: #111827; background: #fff !important; border-bottom: 2px solid #059669; padding: 12px 0; }
@@ -361,8 +364,35 @@
 </head>
 <body>
 
-  <!-- 右上角 / 手機右下角 控制按鈕群組 -->
+  <!-- ================= 浮動控制區域 (列印時隱藏) ================= -->
+  <!-- 目錄選單面板 -->
+  <div class="nav-panel" id="navPanel">
+    <div class="nav-header">
+      <span>📑 快速導覽</span>
+      <button class="close-nav" id="closeNavBtn" title="關閉目錄">✕</button>
+    </div>
+    <div class="nav-links">
+      <a href="#page-info">活動資訊</a>
+      <a href="#page-team">分組名單</a>
+      <a href="#page-d1am">D1 上午</a>
+      <a href="#page-d1pm">D1 下午</a>
+      <a href="#page-d2am">D2 上午</a>
+      <a href="#page-d2pm">D2 下午</a>
+      <a href="#page-equip">裝備與伙食</a>
+      <a href="#page-test">測驗項目</a>
+      <hr class="ta-only" style="border-color: var(--border); margin: 6px 0; width: 100%;">
+      <a href="#ta-admin" class="ta-only" style="color: var(--primary);">📝 行政任務</a>
+      <a href="#ta-mats" class="ta-only" style="color: var(--primary);">📚 教材大綱</a>
+      <a href="#ta-exec" class="ta-only" style="color: var(--primary);">🔒 執行細則</a>
+    </div>
+  </div>
+
+  <!-- 右上角 / 手機右下角 按鈕群組 -->
   <div class="top-controls">
+    <button class="control-btn" id="navToggleBtn" title="開啟目錄">
+      <span class="btn-icon">📑</span>
+      <span class="btn-text">目錄</span>
+    </button>
     <button class="control-btn" id="themeToggle" title="切換色彩模式">
       <span class="btn-icon" id="themeIcon">☀️</span>
       <span class="btn-text" id="themeText" style="display: none;"></span>
@@ -374,7 +404,7 @@
   </div>
 
   <!-- ================= PAGE 1: 封面與活動規範 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-info">
     <div class="header-hero">
       <h1>小腳丫登山訓練營 宿營實務戶外課</h1>
       <p>中13階｜手冊 <span class="ta-only" style="color:var(--accent);">(助教全覽版)</span></p>
@@ -413,7 +443,7 @@
   </div>
 
   <!-- ================= PAGE 2: 分組名單 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-team">
     <h2 class="page-title">分組名單</h2>
     <table class="data-table">
       <thead>
@@ -516,7 +546,7 @@
   </div>
 
   <!-- ================= PAGE 3: D1 上午 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-d1am">
     <h2 class="page-title">流程表 - D1 上午 (09/19)</h2>
     <table class="timeline">
       <thead>
@@ -581,7 +611,7 @@
   </div>
 
   <!-- ================= PAGE 4: D1 下午 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-d1pm">
     <h2 class="page-title">流程表 - D1 下午 (09/19)</h2>
     <table class="timeline">
       <thead>
@@ -646,7 +676,7 @@
   </div>
 
   <!-- ================= PAGE 5: D2 上午 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-d2am">
     <h2 class="page-title">流程表 - D2 上午 (09/20)</h2>
     <table class="timeline">
       <thead>
@@ -721,7 +751,7 @@
   </div>
 
   <!-- ================= PAGE 6: D2 下午 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-d2pm">
     <h2 class="page-title">流程表 - D2 下午 (09/20)</h2>
     <table class="timeline">
       <thead>
@@ -785,7 +815,7 @@
   </div>
 
   <!-- ================= PAGE 7: 裝備與伙食 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-equip">
     <h2 class="page-title">裝備規範與清單</h2>
     <table class="data-table" style="margin-bottom: 24px;">
       <thead>
@@ -890,7 +920,7 @@
   </div>
 
   <!-- ================= PAGE 8: 測驗項目表 ================= -->
-  <div class="a4-page">
+  <div class="a4-page" id="page-test">
     <h2 class="page-title">測驗項目表</h2>
     <table class="data-table">
       <thead>
@@ -939,7 +969,7 @@
        ========================================================================= -->
 
   <!-- ================= TA PAGE 1: 助教行政任務 ================= -->
-  <div class="a4-page ta-only" style="height: auto; min-height: auto; padding-bottom: 25mm;">
+  <div class="a4-page section-panel ta-only" id="ta-admin">
     <h2 class="page-title title-important"><span>📝</span> 助教任務與交通調查</h2>
     <div style="background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--primary); padding: 20px; border-radius: 8px;">
       <p style="margin-top: 0; margin-bottom: 20px; font-size: 15px;">請各位助教於出發前，至下方 Google 試算表完成<strong>「交通飲食」</strong>與<strong>「教學分配」</strong>的填寫作業，以利後續行政統籌。</p>
@@ -954,7 +984,7 @@
   </div>
 
   <!-- ================= TA PAGE 2: 教材大綱與圖文指引 ================= -->
-  <div class="a4-page ta-only" style="height: auto; min-height: 297mm; overflow: visible; padding-bottom: 25mm;">
+  <div class="a4-page section-panel ta-only" id="ta-mats">
     <h2 class="page-title title-important"><span>📚</span> 教材大綱與圖文指引</h2>
     
     <input type="radio" name="mat-tabs" id="mat1">
@@ -1059,7 +1089,7 @@
   </div>
 
   <!-- ================= TA PAGE 3: 教案大綱與執行細則 ================= -->
-  <div class="a4-page ta-only" style="height: auto; min-height: 297mm; overflow: visible; padding-bottom: 25mm;">
+  <div class="a4-page section-panel ta-only" id="ta-exec">
     <h2 class="page-title title-important"><span>🔒</span> 教案大綱與執行細則</h2>
     
     <div class="course-grid">
@@ -1136,11 +1166,13 @@
 
   <!-- 切換腳本與助教密碼鎖 -->
   <script>
+    // ==========================================
+    // 深淺色切換
+    // ==========================================
     const themeToggleBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const htmlEl = document.documentElement;
 
-    // 深淺色偏好記憶
     const currentTheme = localStorage.getItem('site-theme') || 'dark';
     setTheme(currentTheme);
 
@@ -1162,14 +1194,45 @@
     }
 
     // ==========================================
+    // 浮動導覽選單 (目錄面板)
+    // ==========================================
+    const navToggleBtn = document.getElementById('navToggleBtn');
+    const navPanel = document.getElementById('navPanel');
+    const closeNavBtn = document.getElementById('closeNavBtn');
+    
+    // 開啟/關閉選單
+    navToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navPanel.classList.toggle('open');
+    });
+    
+    closeNavBtn.addEventListener('click', () => {
+      navPanel.classList.remove('open');
+    });
+    
+    // 點擊選單以外的地方自動關閉
+    document.addEventListener('click', (e) => {
+      if (!navPanel.contains(e.target) && !navToggleBtn.contains(e.target)) {
+        navPanel.classList.remove('open');
+      }
+    });
+
+    // 點選連結後自動關閉選單，並支援平滑滾動
+    const navLinks = navPanel.querySelectorAll('a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        navPanel.classList.remove('open');
+      });
+    });
+
+    // ==========================================
     // 🔒 助教密碼解鎖機制 (預設密碼: 8888)
     // ==========================================
     const taAuthBtn = document.getElementById('taAuthBtn');
     const taLockIcon = document.getElementById('taLockIcon');
     const taBtnText = document.getElementById('taBtnText');
-    const TA_PASSWORD = "7533967"; // ← 若要更改密碼，請修改這裡
+    const TA_PASSWORD = "8888"; // ← 若要更改密碼，請修改這裡
 
-    // 檢查是否曾經解鎖過
     if (localStorage.getItem('is-ta-unlocked') === 'true') {
       document.body.classList.add('is-ta-mode');
       taLockIcon.textContent = '🔓';
