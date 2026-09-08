@@ -3,1303 +3,1200 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小腳丫登山訓練營 宿營實務戶外課｜助教執行手冊 2026</title>
+  <title>小腳丫登山訓練營 宿營實務戶外課｜手冊</title>
   <style>
+    /* ================= 預設深色主題變數 ================= */
     :root {
-      /* 專業戶外風格色票 */
-      --bg: #121517;
-      --surface: #1e2327;
-      --surface-light: #282f34;
-      --border: #333d45;
+      --app-bg: #0f1115;
+      --bg: #14171a;
+      --surface: #1c2126;
+      --surface-light: #252b32;
+      --border: #2f3741;
       --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --primary: #10b981; /* 松葉綠 */
-      --primary-dark: #059669;
-      --accent: #f59e0b; /* 戶外亮橘 */
+      --text-muted: #8b9baa;
+      --title-color: #ffffff;
+      --hero-bg: linear-gradient(135deg, #111a17 0%, #152922 100%);
+      
+      --primary: #10b981;
+      --accent: #f59e0b;
       --danger: #ef4444;
-      --radius: 12px;
-      --base-font: 16px;
+      --important-bg: rgba(245, 158, 11, 0.12);
+      --important-border: rgba(245, 158, 11, 0.4);
+      --page-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+
+      --blue-tag-bg: rgba(56, 189, 248, 0.12);
+      --blue-tag-text: #38bdf8;
+      --blue-tag-border: rgba(56, 189, 248, 0.3);
+      --ta-tag-bg: rgba(16, 185, 129, 0.08);
+      --ta-tag-border: rgba(16, 185, 129, 0.3);
+      --ta-tag-text: #34d399;
     }
+
+    /* ================= 淺色主題變數 ================= */
+    [data-theme="light"] {
+      --app-bg: #e2e8f0;
+      --bg: #ffffff;
+      --surface: #f8fafc;
+      --surface-light: #f1f5f9;
+      --border: #cbd5e1;
+      --text: #334155;
+      --text-muted: #64748b;
+      --title-color: #0f172a;
+      --hero-bg: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      
+      --primary: #059669;
+      --accent: #d97706;
+      --danger: #dc2626;
+      --important-bg: rgba(217, 119, 6, 0.08);
+      --important-border: rgba(217, 119, 6, 0.3);
+      --page-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+      --blue-tag-bg: #e0f2fe;
+      --blue-tag-text: #0284c7;
+      --blue-tag-border: #bae6fd;
+      --ta-tag-bg: #ecfdf5;
+      --ta-tag-border: #a7f3d0;
+      --ta-tag-text: #059669;
+    }
+    
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    
     body {
       margin: 0;
-      background-color: var(--bg);
+      background-color: var(--app-bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      font-size: var(--base-font);
-      line-height: 1.6;
-    }
-    /* 頂部英雄區 */
-    .hero {
-      background: linear-gradient(135deg, #0f1714 0%, #172721 100%);
-      border-bottom: 3px solid var(--primary);
-      padding: 30px 20px;
-    }
-    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-    .hero .container { padding: 0 20px; }
-    .hero h1 {
-      margin: 0 0 8px;
-      font-size: clamp(26px, 5vw, 36px);
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      color: #fff;
-    }
-    .hero p {
-      margin: 0;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.1em;
-    }
-    /* 導覽列 */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(18, 21, 23, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 12px 20px;
-      max-width: 1000px;
-      margin: auto;
-      scrollbar-width: none;
-    }
-    .nav-inner::-webkit-scrollbar { display: none; }
-    .nav a {
-      flex: none;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 700;
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
       font-size: 15px;
-      transition: all 0.2s;
-    }
-    .nav a:hover, .nav a:active {
-      background: var(--surface-light);
-      color: #fff;
-    }
-    /* 資訊看板 */
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .data-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--primary);
-      padding: 16px;
-      border-radius: 8px;
-    }
-    .data-card span { display: block; color: var(--text-muted); font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-    .data-card strong { display: block; font-size: 17px; color: #fff; }
-    .alert-box {
+      line-height: 1.6;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      padding: 16px;
-      border-radius: 8px;
-      margin-bottom: 24px;
-    }
-    .alert-box strong { color: #fca5a5; }
-    /* 主要按鈕樣式 */
-    .primary-btn {
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background-color: var(--primary);
-      color: #fff;
-      padding: 14px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 16px;
-      transition: all 0.2s;
-      border: 1px solid var(--primary-dark);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      padding: 30px 20px;
+      gap: 30px;
+      transition: background-color 0.3s ease;
     }
-    .primary-btn:hover {
-      background-color: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
-    }
-    /* 通用區塊設定 */
-    .section-panel {
-      background: var(--surface);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      margin-bottom: 24px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .section-header {
+
+    /* ================= 控制按鈕群組 ================= */
+    .top-controls {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      z-index: 999;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      background: var(--surface-light);
-      border-bottom: 1px solid var(--border);
+      gap: 10px;
     }
-    .section-header h2 { margin: 0; font-size: 20px; color: #fff; display: flex; align-items: center; gap: 8px;}
-    .section-header h2::before { content: ""; display: inline-block; width: 6px; height: 20px; background: var(--primary); border-radius: 4px; }
-    .section-body { padding: 20px; }
-    
-    /* 切換分頁 (CSS Only) */
-    .tabs-controller { display: flex; gap: 8px; }
-    .tab-btn {
-      padding: 6px 16px;
-      border-radius: 20px;
+    .control-btn {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 30px;
+      font-size: 14px;
       font-weight: 700;
       cursor: pointer;
-      font-size: 15px;
-      background: var(--bg);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.2s ease;
     }
-    input[type="radio"] { display: none; }
-    
-    /* Day Tabs */
-    #day1:checked ~ .section-header .label-day1,
-    #day2:checked ~ .section-header .label-day2 {
-      background: var(--primary);
-      color: #fff;
+    .control-btn:hover {
+      transform: translateY(-2px);
       border-color: var(--primary);
+      color: var(--title-color);
     }
-    .view-day1, .view-day2 { display: none; }
-    #day1:checked ~ .view-day1 { display: block; }
-    #day2:checked ~ .view-day2 { display: block; }
 
-    /* Material Tabs (教材分頁) */
-    .mat-tabs-controller { 
-      display: flex; gap: 8px; overflow-x: auto; width: 100%;
-      scrollbar-width: none; padding-bottom: 4px;
+    /* ================= 助教版切換核心 (CSS 隱藏標籤) ================= */
+    .ta-only { display: none !important; }
+    body.is-ta-mode .ta-only { display: block !important; }
+    body.is-ta-mode tr.ta-only { display: table-row !important; }
+    body.is-ta-mode th.ta-only, body.is-ta-mode td.ta-only { display: table-cell !important; }
+
+    /* ================= 響應式 A4 容器設定 ================= */
+    .a4-page {
+      width: 100%;
+      max-width: 210mm; /* 限制最大寬度為A4 */
+      min-height: 297mm; /* 預設保留A4比例 */
+      background-color: var(--bg);
+      position: relative;
+      overflow: visible; /* 防止行動版內容被裁切 */
+      box-shadow: var(--page-shadow);
+      padding: 20mm 15mm 25mm 15mm; /* 底部多留空間給 Footer */
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    /* 教材頁籤與課程細則專用樣式 */
+    .tabs-controller { display: flex; gap: 8px; }
+    .tab-btn { padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 14px; background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
+    input[type="radio"] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+    
+    .mat-tabs-controller { display: flex; gap: 8px; overflow-x: auto; width: 100%; scrollbar-width: none; padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 16px;}
     .mat-tabs-controller::-webkit-scrollbar { display: none; }
-    .mat-tab-btn {
-      padding: 6px 16px; border-radius: 20px; font-weight: 700; cursor: pointer;
-      font-size: 14px; background: var(--bg); color: var(--text-muted); border: 1px solid var(--border);
-      flex-shrink: 0; white-space: nowrap;
-    }
+    .mat-tab-btn { padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer; font-size: 14.5px; background: var(--surface); color: var(--text-muted); border: 1px solid var(--border); flex-shrink: 0; white-space: nowrap; }
     
-    #mat1:checked ~ .section-header .label-mat1,
-    #mat2:checked ~ .section-header .label-mat2,
-    #mat3:checked ~ .section-header .label-mat3,
-    #mat4:checked ~ .section-header .label-mat4,
-    #mat5:checked ~ .section-header .label-mat5,
-    #mat6:checked ~ .section-header .label-mat6,
-    #mat7:checked ~ .section-header .label-mat7,
-    #mat8:checked ~ .section-header .label-mat8,
-    #mat9:checked ~ .section-header .label-mat9 {
-      background: var(--accent); color: #fff; border-color: var(--accent);
-    }
+    #mat1:checked ~ .mat-tabs-controller .label-mat1, #mat2:checked ~ .mat-tabs-controller .label-mat2, #mat3:checked ~ .mat-tabs-controller .label-mat3, #mat4:checked ~ .mat-tabs-controller .label-mat4, #mat5:checked ~ .mat-tabs-controller .label-mat5, #mat6:checked ~ .mat-tabs-controller .label-mat6, #mat7:checked ~ .mat-tabs-controller .label-mat7, #mat8:checked ~ .mat-tabs-controller .label-mat8, #mat9:checked ~ .mat-tabs-controller .label-mat9 { background: var(--accent); color: #fff; border-color: var(--accent); }
     
-    .view-mat1, .view-mat2, .view-mat3, .view-mat4, .view-mat5, .view-mat6, .view-mat7, .view-mat8, .view-mat9 { display: none; padding: 24px 20px; }
-    
-    #mat1:checked ~ .view-mat1, #mat2:checked ~ .view-mat2, #mat3:checked ~ .view-mat3,
-    #mat4:checked ~ .view-mat4, #mat5:checked ~ .view-mat5, #mat6:checked ~ .view-mat6,
-    #mat7:checked ~ .view-mat7, #mat8:checked ~ .view-mat8, #mat9:checked ~ .view-mat9 { display: block; }
-    
-    /* 教材內文排版 */
+    .view-mat1, .view-mat2, .view-mat3, .view-mat4, .view-mat5, .view-mat6, .view-mat7, .view-mat8, .view-mat9 { display: none; padding: 10px 0; }
+    #mat1:checked ~ .view-mat1, #mat2:checked ~ .view-mat2, #mat3:checked ~ .view-mat3, #mat4:checked ~ .view-mat4, #mat5:checked ~ .view-mat5, #mat6:checked ~ .view-mat6, #mat7:checked ~ .view-mat7, #mat8:checked ~ .view-mat8, #mat9:checked ~ .view-mat9 { display: block; }
+
     .view-mat-content ul, .view-mat-content ol { margin-bottom: 16px; font-size: 15px; color: var(--text); padding-left: 24px;}
     .view-mat-content li { margin-bottom: 8px; }
-    .view-mat-content li strong { color: #fff; }
-    .view-mat-content h4 { margin-top: 24px; margin-bottom: 12px; font-size: 17px; display: flex; align-items: center; gap: 6px;}
+    .view-mat-content li strong { color: var(--title-color); }
+    .view-mat-content h4 { margin-top: 24px; margin-bottom: 12px; font-size: 17.5px; display: flex; align-items: center; gap: 6px; color: var(--primary);}
     .view-mat-content a { color: var(--primary); text-decoration: none; font-weight: 700; }
-    .view-mat-content a:hover { text-decoration: underline; }
 
-    /* 行程表 */
-    .timeline { width: 100%; border-collapse: collapse; }
-    .timeline th {
-      background: var(--bg);
-      color: var(--text-muted);
-      text-align: left;
-      padding: 12px 16px;
-      font-size: 14px;
-      font-weight: 700;
-      border-bottom: 2px solid var(--border);
-    }
-    .timeline td {
-      padding: 16px;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-    .timeline tr:last-child td { border-bottom: none; }
-    .time-badge {
-      display: inline-block;
-      font-family: ui-monospace, SFMono-Regular, monospace;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--accent);
-      background: rgba(245, 158, 11, 0.1);
-      padding: 4px 8px;
-      border-radius: 6px;
-    }
-    .task-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .task-note { font-size: 15px; color: var(--text-muted); }
-    
-    /* ★ 助教注意事項專屬樣式 ★ */
-    .ta-alert {
-      margin-top: 10px;
-      padding: 10px 12px;
-      background: rgba(16, 185, 129, 0.12);
-      border-left: 3px solid var(--primary);
-      border-radius: 6px;
-      font-size: 14px;
-      color: #a7f3d0;
-      line-height: 1.6;
-    }
-    .ta-alert strong {
-      display: block;
-      color: #34d399;
-      margin-bottom: 4px;
-      font-size: 13px;
-      letter-spacing: 0.05em;
-    }
-
-    /* 藍色必備標籤 */
-    .item-blue {
-      display: inline-block;
-      color: #38bdf8;
-      font-weight: 800;
-      background: rgba(56, 189, 248, 0.15);
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin: 2px 0;
-    }
-
-    /* 清單與標籤 */
-    ul, ol { margin: 0; padding-left: 20px; }
-    li { margin-bottom: 6px; }
-    .tag {
-      display: inline-block;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 13px;
-      font-weight: 800;
-      margin-right: 8px;
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--primary);
-    }
-    .tag.red { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
-    .tag.gray { background: rgba(148, 163, 184, 0.15); color: var(--text-muted); }
-    
-    /* 課程卡片 */
-    .course-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-    .course-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 18px;
-    }
-    .course-card h4 {
-      margin: 0 0 12px 0;
-      color: var(--accent);
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
-    }
+    .course-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+    .course-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+    .course-card h4 { margin: 0 0 12px 0; color: var(--accent); font-size: 17px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
     .course-card .meta { display: flex; gap: 8px; }
     .course-card h5 { margin: 12px 0 6px 0; color: var(--primary); font-size: 15px; }
-    .course-card ul, .course-card ol { font-size: 15px; color: var(--text); }
-    @media (min-width: 768px) {
-      .course-grid { grid-template-columns: 1fr 1fr; }
+    @media (min-width: 768px) { .course-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ================= 頂部標題區 ================= */
+    .header-hero {
+      background: var(--hero-bg);
+      border-left: 6px solid var(--primary);
+      padding: 24px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      border-left-width: 6px;
     }
-    
-    /* 收合面板 (Details) */
-    details.section-panel > summary {
-      list-style: none;
-      padding: 18px 20px;
-      cursor: pointer;
-      font-size: 18px;
+    .header-hero h1 { margin: 0 0 6px; font-size: 26px; font-weight: 800; color: var(--title-color); letter-spacing: 0.05em; }
+    .header-hero p { margin: 0; color: var(--primary); font-weight: 700; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ================= 頁面標題 ================= */
+    .page-title {
+      font-size: 20px;
       font-weight: 800;
-      color: #fff;
+      color: var(--title-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .page-title::before { content: ""; display: block; width: 5px; height: 20px; background: var(--primary); border-radius: 2px; }
+
+    .title-important { color: var(--accent); border-bottom-color: rgba(245, 158, 11, 0.3); }
+    .title-important::before { background: var(--accent); }
+    [data-theme="light"] .title-important { color: #b45309; border-bottom-color: rgba(217, 119, 6, 0.3); }
+    [data-theme="light"] .title-important::before { background: #b45309; }
+
+    .card-important { background: var(--important-bg); border: 1px solid var(--important-border) !important; border-top: 4px solid var(--accent) !important; text-align: center; padding: 16px 8px !important; border-radius: 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .card-important strong { font-size: 15.5px !important; color: var(--accent) !important; letter-spacing: 0.05em; }
+    [data-theme="light"] .card-important strong { color: #b45309 !important; }
+
+    /* ================= 資訊看板 ================= */
+    .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+    .summary-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 24px; }
+    .data-card { background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--primary); padding: 14px; border-radius: 6px; }
+    .data-card span { display: block; color: var(--text-muted); font-size: 12.5px; font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .data-card strong { display: block; font-size: 16.5px; color: var(--title-color); }
+    .card-center { text-align: center; padding: 14px 8px; }
+    .card-center strong { font-size: 15px; }
+    
+    /* ================= 警告區塊 ================= */
+    .alert-box { display: flex; flex-direction: column; gap: 10px; background: var(--important-bg); border: 1px solid var(--important-border); border-left: 4px solid var(--accent); padding: 16px; border-radius: 6px; margin-bottom: 24px; font-size: 15px; line-height: 1.6; color: var(--title-color); }
+    .alert-box strong { color: var(--accent); }
+
+    /* ================= 表格通用專業設定 ================= */
+    .timeline, .data-table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+    .timeline th, .data-table th { background: var(--surface-light); color: var(--text-muted); text-align: left; padding: 12px 16px; font-size: 14px; font-weight: 800; letter-spacing: 0.1em; border-bottom: 2px solid var(--border); border-top: 1px solid var(--border); }
+    .timeline td, .data-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; font-size: 15px; line-height: 1.6; }
+    .timeline tr:last-child td, .data-table tr:last-child td { border-bottom: 1px solid var(--border); }
+
+    .time-badge { display: inline-block; font-family: ui-monospace, SFMono-Regular, "Roboto Mono", monospace; font-size: 14px; font-weight: 700; color: var(--accent); background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.2); padding: 4px 8px; border-radius: 4px; }
+    .task-title { font-size: 17px; font-weight: 800; color: var(--title-color); margin-bottom: 4px; }
+    .task-note { font-size: 14.5px; color: var(--text-muted); }
+
+    /* 助教綠色提醒標籤 */
+    .ta-alert { margin-top: 10px; padding: 12px; background: rgba(16, 185, 129, 0.12); border-left: 3px solid var(--primary); border-radius: 6px; font-size: 14.5px; color: var(--ta-tag-text); line-height: 1.6; }
+    .ta-alert strong { display: block; color: var(--ta-tag-text); margin-bottom: 4px; font-size: 13.5px; letter-spacing: 0.05em; }
+
+    /* ================= 標籤與細節 ================= */
+    .item-blue { display: inline-block; color: var(--blue-tag-text); font-weight: 800; background: var(--blue-tag-bg); border: 1px solid var(--blue-tag-border); padding: 2px 6px; border-radius: 4px; margin: 2px 0; font-size: 14.5px; }
+
+    .name-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .name-badge { display: inline-block; background: var(--surface); border: 1px solid var(--border); padding: 6px 12px; border-radius: 6px; font-size: 15px; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .ta-badge { background: var(--ta-tag-bg); border: 1px solid var(--ta-tag-border); color: var(--ta-tag-text); }
+    .tag-red { display: inline-block; padding: 4px 8px; border-radius: 4px; font-size: 13.5px; font-weight: 800; margin-right: 8px; background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    /* ================= 頁尾頁碼 ================= */
+    .page-footer {
+      position: absolute;
+      bottom: 15mm;
+      left: 15mm;
+      right: 15mm;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      background: var(--surface-light);
-    }
-    details.section-panel > summary::-webkit-details-marker { display: none; }
-    details.section-panel > summary::after { content: "▼"; font-size: 14px; color: var(--primary); transition: transform 0.3s; }
-    details.section-panel[open] > summary::after { transform: rotate(180deg); }
-    details.section-panel[open] > summary { border-bottom: 1px solid var(--border); }
-    
-    /* 資料表格 */
-    .data-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
-    .data-table th, .data-table td {
-      border: 1px solid var(--border);
-      padding: 12px;
-      text-align: left;
-    }
-    .data-table th { background: var(--bg); color: var(--text-muted); font-size: 14px; }
-    .data-table td { font-size: 16px; vertical-align: top; }
-    
-    /* 姓名區塊呈現 */
-    .name-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .name-badge {
-      display: inline-block;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 15px;
-      color: var(--text);
-      white-space: nowrap;
-    }
-    .ta-badge {
-      background: rgba(16, 185, 129, 0.08);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: #34d399; 
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
     }
 
-    /* 響應式：手機版大幅優化 */
+    /* ================= 📱 手機 RWD 響應式優化 ================= */
     @media (max-width: 768px) {
-      .hero { padding: 24px 16px; }
-      .container { padding: 12px; }
-      .section-panel { margin-bottom: 16px; }
-      .section-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px; }
-      .section-body { padding: 16px; }
+      body {
+        padding: 10px 10px 80px 10px; /* 底部保留按鈕空間 */
+        gap: 15px;
+        font-size: 16.5px;
+      }
+      .a4-page {
+        padding: 20px 15px 60px 15px; /* 移除固定的 A4 高度，讓內容順排 */
+        min-height: auto;
+        border-radius: 12px;
+      }
+      
+      /* 將原本的多欄位壓縮成 2 欄 */
+      .summary-grid, .summary-grid-5 { grid-template-columns: 1fr 1fr; gap: 10px;}
+      .summary-grid-5 .data-card:last-child { grid-column: span 2; }
+      
+      /* 行程表 RWD 轉換為卡片堆疊 */
       .timeline thead { display: none; }
       .timeline, .timeline tbody, .timeline tr, .timeline td { display: block; width: 100%; }
       .timeline tr {
-        background: var(--bg);
-        margin-bottom: 12px;
+        background: var(--surface);
+        margin-bottom: 16px;
         border-radius: 8px;
         border: 1px solid var(--border);
         padding: 16px;
       }
-      .timeline td { padding: 0; border: none; margin-bottom: 10px; }
-      .timeline td:last-child { margin-bottom: 0; }
-      .task-title { font-size: 19px; }
-      .task-note { font-size: 16px; }
-      .data-table th, .data-table td { padding: 10px 8px; font-size: 15px; }
-      .data-table th { white-space: nowrap; }
+      .timeline td { padding: 0 0 10px 0; border: none; }
+      .timeline td:last-child { padding-bottom: 0; }
+      .time-badge { font-size: 14.5px; padding: 6px 12px; margin-bottom: 4px;}
+      .task-title { font-size: 19px; margin-bottom: 6px; }
+      .task-note { font-size: 16px; line-height: 1.6; }
+
+      /* 表格 RWD 轉換為卡片堆疊 */
+      .data-table thead { display: none; }
+      .data-table, .data-table tbody, .data-table tr, .data-table td { display: block; width: 100%; }
+      .data-table tr {
+        background: var(--surface);
+        margin-bottom: 16px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        padding: 16px;
+      }
+      .data-table td { padding: 6px 0; border: none; font-size: 16px;}
+      .data-table td:first-child { font-weight: 800; color: var(--accent); font-size: 18px; border-bottom: 1px dashed var(--border); margin-bottom: 8px; padding-bottom: 10px;}
+
+      /* 頁尾位置還原為相對排版 */
+      .page-footer {
+        position: relative;
+        bottom: auto; left: auto; right: auto;
+        margin-top: 20px;
+        padding-top: 15px;
+      }
+
+      /* 懸浮按鈕移至右下角，適合手機單手點擊 */
+      .top-controls {
+        top: auto;
+        bottom: 20px;
+        right: 15px;
+        flex-direction: column-reverse;
+      }
+      .control-btn {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        padding: 0;
+        justify-content: center;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      }
+      .control-btn .btn-text { display: none; }
+      .control-btn .btn-icon { font-size: 20px; }
+    }
+
+    /* ================= 🖨️ PDF 匯出 / 列印最佳化 ================= */
+    @media print {
+      :root {
+        --bg: #ffffff !important;
+        --surface: #f8fafc !important;
+        --surface-light: #f1f5f9 !important;
+        --border: #cbd5e1 !important;
+        --text: #334155 !important;
+        --text-muted: #64748b !important;
+        --title-color: #0f172a !important;
+        --primary: #059669 !important;
+      }
+      body { color: #334155; background: #fff !important; font-size: 11pt; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; padding: 0; margin: 0; display: block; }
+      
+      .top-controls { display: none !important; }
+      
+      .a4-page {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        padding: 20mm 15mm 20mm 15mm !important;
+        page-break-after: always;
+      }
+      
+      .hero { color: #111827; background: #fff !important; border-bottom: 2px solid #059669; padding: 12px 0; }
+      .hero h1, .section-header h2, .task-title, .course-card li strong { color: #0f172a !important; }
+      
+      /* 表格防斷層設計 */
+      table { width: 100%; border-collapse: collapse; page-break-inside: auto; }
+      tr { page-break-inside: avoid; page-break-after: auto; }
+      thead { display: table-header-group; }
+      tfoot { display: table-footer-group; }
+
+      /* 強制展開助教教材面板 */
+      body.is-ta-mode .view-mat1, body.is-ta-mode .view-mat2, body.is-ta-mode .view-mat3,
+      body.is-ta-mode .view-mat4, body.is-ta-mode .view-mat5, body.is-ta-mode .view-mat6,
+      body.is-ta-mode .view-mat7, body.is-ta-mode .view-mat8, body.is-ta-mode .view-mat9 { display: block !important; margin-bottom: 15px;}
+      body.is-ta-mode .mat-tabs-controller { display: none !important; }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
+
+  <!-- 右上角 / 手機右下角 控制按鈕群組 -->
+  <div class="top-controls">
+    <button class="control-btn" id="themeToggle" title="切換色彩模式">
+      <span class="btn-icon" id="themeIcon">☀️</span>
+      <span class="btn-text" id="themeText" style="display: none;"></span>
+    </button>
+    <button class="control-btn" id="taAuthBtn" title="解鎖助教版資訊">
+      <span class="btn-icon" id="taLockIcon">🔒</span>
+      <span class="btn-text" id="taBtnText">助教專區</span>
+    </button>
+  </div>
+
+  <!-- ================= PAGE 1: 封面與活動規範 ================= -->
+  <div class="a4-page">
+    <div class="header-hero">
       <h1>小腳丫登山訓練營 宿營實務戶外課</h1>
-      <p>中13階助教執行手冊 RUN DOWN</p>
+      <p>中13階｜手冊 <span class="ta-only" style="color:var(--accent);">(助教全覽版)</span></p>
     </div>
-  </header>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#overview">活動資訊</a>
-      <a href="#ta-survey" style="color: var(--primary);">📝 助教填寫</a>
-      <a href="#rundown">課程表</a>
-      <a href="#materials" style="color: var(--accent);">📚 教材大綱</a>
-      <a href="#course-content">課程細則</a>
-      <a href="#teams">分組名單</a>
-      <a href="#equipment">裝備清單</a>
-      <a href="#meals">伙食規定</a>
-      <a href="#tests">測驗項目</a>
+
+    <h2 class="page-title">活動資訊</h2>
+    <div class="summary-grid">
+      <div class="data-card"><span>日期</span><strong>09/19 – 09/20</strong></div>
+      <div class="data-card"><span>集合時間</span><strong>07:30</strong></div>
+      <div class="data-card"><span>集合地點</span><strong>熊空橋</strong><span style="font-size:12px; margin-top:3px; color:var(--text-muted); text-transform: none;">TWD97: 297555, 2750766</span></div>
+      <div class="data-card ta-only" style="grid-column: span 3; border-top-color: var(--accent);"><span>TA 人員編制</span><strong style="color:var(--accent);">22 學員 / 15 助教</strong></div>
     </div>
-  </nav>
-  <main class="container">
-    
-    <!-- ★ 更新：活動基本資訊與規範 ★ -->
-    <section id="overview">
-      <h3 style="color:var(--primary); margin-top: 0; margin-bottom: 12px;">活動資訊概覽</h3>
-      <div class="summary-grid">
-        <div class="data-card"><span>日期</span><strong>09/19 – 09/20</strong></div>
-        <div class="data-card"><span>集合時間</span><strong>07:30</strong></div>
-        <div class="data-card"><span>集合地點</span><strong>熊空橋</strong></div>
-        <div class="data-card"><span>人員編制</span><strong>22 學員 / 15 助教</strong></div>
-        <div class="data-card"><span>基地座標</span><strong>TWD97: 297555, 2750766</strong></div>
-      </div>
+  
+    <h2 class="page-title">宿營實務：戶外課須知</h2>
+    <div class="alert-box">
+      <div><strong>[原則] </strong> 戶外課以「訓練」為目的設計，請依教案準備訓練用裝備，並請配合教官/助教指示。</div>
+      <div><strong>[安全] </strong> 上課期間需戴岩盔；不可穿如拖(涼)鞋等未包指鞋款。</div>
+      <div><strong>[限重] </strong> 負重 &lt; 9kg。不含山(草)刀 / 登山杖 / 飲用水。其餘裝備食材(個人/團炊)皆須納入計算。</div>
+      <div><strong>[裝備] </strong> 本課程不可使用睡袋、睡墊、露宿袋、暖暖包(傳統/電子式)。</div>
+      <div><strong>[教務] </strong> 如有違上述並經教務夥伴提醒仍不願配合者，本課程視為「未完成」。</div>
+    </div>
 
-      <!-- 新增：小腳丫登山規範 -->
-      <h3 style="color:var(--accent); margin-top: 32px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-        ⚠️ 在開始前：小腳丫登山規範
-      </h3>
-      <div class="summary-grid" style="grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));">
-        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>同進同出</strong></div>
-        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>回望等待</strong></div>
-        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>遵守紀律</strong></div>
-        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>團結合作</strong></div>
-        <div class="data-card" style="text-align: center; border-top: 3px solid var(--accent); border-left: none;"><strong>最弱隊友原則</strong></div>
-      </div>
+    <h2 class="page-title title-important"><span></span> 不只技能訓練 更重要的是</h2>
+    <div class="summary-grid-5">
+      <div class="data-card card-important"><strong>同進同出</strong></div>
+      <div class="data-card card-important"><strong>回望等待</strong></div>
+      <div class="data-card card-important"><strong>遵守紀律</strong></div>
+      <div class="data-card card-important"><strong>團結合作</strong></div>
+      <div class="data-card card-important"><strong>最弱隊友原則</strong></div>
+    </div>
 
-      <!-- 更新：戶外課須知 -->
-      <h3 style="color:var(--primary); margin-top: 32px; margin-bottom: 16px;">宿營實務：戶外課須知</h3>
-      <div class="alert-box">
-        <div><strong>[基本守則]</strong> 內容是以「訓練」為目的設計，請依教案說明準備，並配合教官/助教指示。</div>
-        <div><strong>[安全規定]</strong> 上課期間需戴岩盔，不可穿如：拖(涼)鞋等未包指鞋款。</div>
-        <div><strong>[裝備限重]</strong> &lt; 9kg。不含：山(草)刀 / 登山杖 / 飲用水。其餘裝備與食材(個人/團炊)皆須納入重量計算。</div>
-        <div><strong>[禁用裝備]</strong> 嚴格禁止睡袋、睡墊、露宿袋、暖暖包。</div>
-        <div><strong>[教務規範]</strong> 如有違上述並經教務夥伴提醒仍不願配合者，本課程視為「未完成」。</div>
-      </div>
-    </section>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 1</span>
+    </div>
+  </div>
 
-    <!-- 助教表單連結區塊 -->
-    <section class="section-panel" id="ta-survey">
-      <div class="section-header" style="background-color: rgba(16, 185, 129, 0.1);">
-        <h2 style="color: var(--primary);">助教任務與交通調查</h2>
-      </div>
-      <div class="section-body">
-        <p style="margin-top: 0; margin-bottom: 20px; font-size: 16px;">請各位助教於出發前，至下方 Google 試算表完成<strong>「交通飲食」</strong>與<strong>「教學分配」</strong>的填寫作業，以利後續行政統籌。</p>
-        <a href="https://docs.google.com/spreadsheets/d/1Bs26ZKbQVA9BkZajjo8ku8c2wB-hUGJXf-WkeiDGp08/edit?gid=1791898238#gid=1791898238" target="_blank" class="primary-btn">
-          前往 Google 試算表填寫 ↗
-        </a>
-      </div>
-    </section>
+  <!-- ================= PAGE 2: 分組名單 ================= -->
+  <div class="a4-page">
+    <h2 class="page-title">分組名單</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th width="90">組別</th>
+          <th>學員(首位為組長)</th>
+          <th>組助教</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>第 1 組</strong></td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge">吳則辰</span>
+              <span class="name-badge">傅傑</span>
+              <span class="name-badge">黃雨柔</span>
+              <span class="name-badge">許荷</span>
+              <span class="name-badge">黃倩茹</span>
+            </div>
+          </td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge ta-badge">林孟璇</span>
+              <span class="name-badge ta-badge">Joe Fu</span>
+              <span class="name-badge ta-badge">Sam Hsiang</span>
+              <span class="name-badge ta-badge">邱小白</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>第 2 組</strong></td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge">陳盈璇</span>
+              <span class="name-badge">周根主</span>
+              <span class="name-badge">林政穎</span>
+              <span class="name-badge">羅鈺潔</span>
+              <span class="name-badge">邱盈琳</span>
+              <span class="name-badge">楊淑娥</span>
+            </div>
+          </td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge ta-badge">Jerry Ko</span>
+              <span class="name-badge ta-badge">Stella Yao</span>
+              <span class="name-badge ta-badge">林小萬</span>
+              <span class="name-badge ta-badge">suzosam</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>第 3 組</strong></td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge">林煥祥</span>
+              <span class="name-badge">林長青</span>
+              <span class="name-badge">黃心滿</span>
+              <span class="name-badge">何迎竹</span>
+              <span class="name-badge">趙雲</span>
+              <span class="name-badge">陳尹屏</span>
+            </div>
+          </td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge ta-badge">hengchia.liang</span>
+              <span class="name-badge ta-badge">Tingchun Yeh</span>
+              <span class="name-badge ta-badge">hank.wu</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><strong>第 4 組</strong></td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge">林佳璇</span>
+              <span class="name-badge">李明遠</span>
+              <span class="name-badge">劉奕和</span>
+              <span class="name-badge">李杰璇</span>
+              <span class="name-badge">黃郁雯</span>
+              <span class="name-badge">周泳震</span>
+            </div>
+          </td>
+          <td>
+            <div class="name-grid">
+              <span class="name-badge ta-badge">Akei Wang</span>
+              <span class="name-badge ta-badge">吳啟典</span>
+              <span class="name-badge ta-badge">Dennis Hung</span>
+              <span class="name-badge ta-badge">曾嘉怡</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-    <!-- 核心行程表 -->
-    <section class="section-panel" id="rundown">
-      <input type="radio" name="day-tabs" id="day1" checked>
-      <input type="radio" name="day-tabs" id="day2">
-      <div class="section-header">
-        <h2>戶外課流程</h2>
-        <div class="tabs-controller">
-          <label for="day1" class="tab-btn label-day1">Day 1 (09/19)</label>
-          <label for="day2" class="tab-btn label-day2">Day 2 (09/20)</label>
-        </div>
-      </div>
-      <!-- Day 1  -->
-      <div class="view-day1">
-        <table class="timeline">
-          <thead>
-            <tr>
-              <th width="140">時間</th>
-              <th>項目 / 課程內容</th>
-              <th>執行細節與備註</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="time-badge">07:30 – 08:00</span></td>
-              <td><div class="task-title">抵達停車點 / 換裝集合熱身</div></td>
-              <td class="task-note">07:30集合<br>熊空橋 (TWD97: 297136, 2749650)</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">08:00 – 09:00</span></td>
-              <td><div class="task-title">[課程0] 團體跑步 / 換裝</div></td>
-              <td class="task-note">各組為單位團跑</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">09:00 – 10:20</span></td>
-              <td><div class="task-title">入山儀式 / 移動至營地</div></td>
-              <td class="task-note">
-                移動(含取水)至座標 TWD97: 297555, 2750766
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>1. 各組備一隻磅秤，引導學員調整。<br>2. 傳統路勿配、用刀。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">10:20 – 10:40</span></td>
-              <td><div class="task-title">[課程1] 行進用刀</div></td>
-              <td class="task-note">
-                用刀安全/基本刀法<br>講解 20mins 
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>協助檢查刀具。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">10:40 – 11:00</span></td>
-              <td><div class="task-title">[課程2] 營地整理</div></td>
-              <td class="task-note">講解 20min</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">11:00 – 11:50</span></td>
-              <td><div class="task-title"> 練習：行進用刀+整理炊事用營地</div></td>
-              <td class="task-note">
-                20 min行進用刀+30min營地整理
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>1. 盡量找到可搭雙A+Y字主繩空間。<br>2. 學員整理完先幫學員拉天幕(由助教操作)。<br>3. [雨備] 助教先找空位拉天幕，學員下揹包再操作。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">11:50 – 12:40</span></td>
-              <td><div class="task-title">午餐</div></td>
-              <td class="task-note">用餐 50min，自理</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">12:40 – 13:30</span></td>
-              <td><div class="task-title">[課程3] A/雙A/自立營柱帳型</div></td>
-              <td class="task-note">講解40 min </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">13:30 – 14:30</span></td>
-              <td><div class="task-title">練習:搭帳</div></td>
-              <td class="task-note">
-                練習 60 min
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>以教案為主，學員熟悉後再分享其他搭設技術。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">14:30 – 15:00</span></td>
-              <td><div class="task-title">[課程4] 單斜金字塔</div></td>
-              <td class="task-note">搭法教學</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">15:00 – 17:00</span></td>
-              <td><div class="task-title">個人營地搭建</div></td>
-              <td class="task-note">
-                選營地 / 營地整理 / 單斜架設
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>各帳間隔 10M+ / 小組盡量同一區塊(選定後GPX打點) / 不用刻意請學員挑不平處。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">17:00 – 18:30</span></td>
-              <td><div class="task-title">用餐 / 團炊</div></td>
-              <td class="task-note">移動至團炊區進行晚餐</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">18:40 – 20:00</span></td>
-              <td><div class="task-title">[課程5] 營地生活</div></td>
-              <td class="task-note">炊煮 / 營地生活分享</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">20:00 – 明早</span></td>
-              <td><div class="task-title">[課程6] 夜間獨處</div></td>
-              <td class="task-note">
-                1. 獨自一人度過一晚。<br>2. 物資維持(電力/飲食)
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>1. 回帳後可去晃一晃，不主動干擾獨處為原則。<br>2. 協調隔日大組要看的帳。</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- Day 2  -->
-      <div class="view-day2">
-        <table class="timeline">
-          <thead>
-            <tr>
-              <th width="140">時間</th>
-              <th>項目 / 課程內容</th>
-              <th>執行細節與備註</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="time-badge">06:00</span></td>
-              <td><div class="task-title">起床</div></td>
-              <td class="task-note">
-                用完早餐，不用收帳，於組長帳前集合。
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>記得設鬧鐘。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">06:00 – 07:30</span></td>
-              <td><div class="task-title">小組巡禮</div></td>
-              <td class="task-note">
-                各組助教巡視並解說營地狀態
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>如有大隊巡禮，小組請於 06:40 講解完。如無大隊分享則可解說至 07:20。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">07:30 – 08:00</span></td>
-              <td><div class="task-title">收帳</div></td>
-              <td class="task-note">撤收金字塔 / 裝備打包</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">08:00 – 08:20</span></td>
-              <td><div class="task-title">[課程4.1] 快速避難帳</div></td>
-              <td class="task-note">撤收金字塔後，集合到營本部再統一示範</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">08:30 – 09:30</span></td>
-              <td><div class="task-title" style="color:var(--accent)">[測驗1] 雙A帳 / 自立營柱帳</div></td>
-              <td class="task-note">分組團體搭帳測驗 [地點:炊事帳區]</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">09:30 – 10:00</span></td>
-              <td><div class="task-title">移動</div></td>
-              <!-- ★ 更新：操課場地座標 ★ -->
-              <td class="task-note">至下一個操課場地 (TWD97: 297531, 2751116)</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">10:00 – 10:30</span></td>
-              <td><div class="task-title">[課程7] 用刀技巧</div></td>
-              <td class="task-note">用刀安全<br>1.砍/劈柴 2.鋸 3.夾刀/夾鋸處理 4.薪柴整理/分類</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">10:30 – 11:20</span></td>
-              <td><div class="task-title">練習</div></td>
-              <td class="task-note">
-                刀 / 鋸實地操作
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>1. 操作安全。<br>2. 不砍活木/立木/腐木。<br>3. 提醒薪柴保留。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">11:20 – 11:50</span></td>
-              <td><div class="task-title">[課程8] 生火教學</div></td>
-              <td class="task-note">1.生火地點選擇+焚火盆組裝架設 2.隧道/井字/金字塔架法。3.火媒棒製作 4.復原</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">11:50 – 12:40</span></td>
-              <td><div class="task-title" style="color:var(--accent)">[測驗2] 午餐煮飯測驗</div></td>
-              <td class="task-note">
-                必煮白飯 (煮完請整鍋給助教檢查)
-                <div class="ta-alert"><strong>💡 助教注意事項：</strong>煮完記得吃一口。</div>
-              </td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">12:40 – 13:20</span></td>
-              <td><div class="task-title">生火練習</div></td>
-              <td class="task-note">生火 / 撿柴整理</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">13:20 – 14:20</span></td>
-              <td><div class="task-title" style="color:var(--accent)">[測驗3] 刀鋸操作測驗</div></td>
-              <td class="task-note">砍木取柴、薪柴鋸平、劈柴</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">14:20 – 15:20</span></td>
-              <td><div class="task-title" style="color:var(--accent)">[測驗4] 生火測驗</div></td>
-              <td class="task-note">分柴、生火、場地復原</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">15:20 – 15:40</span></td>
-              <td><div class="task-title">撤收 (場地復原)</div></td>
-              <td class="task-note">場地復原 (生火 / 刀鋸痕跡)</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">15:40 – 16:30</span></td>
-              <td><div class="task-title">行走回停車場</div></td>
-              <td class="task-note">行軍撤退</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">16:30 – 17:00</span></td>
-              <td><div class="task-title">討論暨心得分享</div></td>
-              <td class="task-note">組內分享討論(15min)，各組分享(5min/組)</td>
-            </tr>
-            <tr>
-              <td><span class="time-badge">17:00</span></td>
-              <td><div class="task-title">賦歸</div></td>
-              <td class="task-note">解散</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 2</span>
+    </div>
+  </div>
 
-    <!-- 教材與操作大綱頁籤 -->
-    <section class="section-panel" id="materials">
-      <input type="radio" name="mat-tabs" id="mat1">
-      <input type="radio" name="mat-tabs" id="mat2">
-      <input type="radio" name="mat-tabs" id="mat3"> 
-      <input type="radio" name="mat-tabs" id="mat4" checked>
-      <input type="radio" name="mat-tabs" id="mat5">
-      <input type="radio" name="mat-tabs" id="mat6">
-      <input type="radio" name="mat-tabs" id="mat7">
-      <input type="radio" name="mat-tabs" id="mat8">
-      <input type="radio" name="mat-tabs" id="mat9">
-      
-      <div class="section-header" style="flex-direction: column; align-items: flex-start; gap: 16px; padding-bottom: 8px;">
-        <h2>📚 教材大綱與圖文指引</h2>
-        <div class="mat-tabs-controller">
-          <label for="mat1" class="mat-tab-btn label-mat1">行進用刀</label>
-          <label for="mat2" class="mat-tab-btn label-mat2">營地整理</label>
-          <label for="mat3" class="mat-tab-btn label-mat3">營地用刀</label>
-          <label for="mat4" class="mat-tab-btn label-mat4">雙A帳搭設</label>
-          <label for="mat5" class="mat-tab-btn label-mat5">自立營柱帳</label>
-          <label for="mat6" class="mat-tab-btn label-mat6">單斜金字塔</label>
-          <label for="mat7" class="mat-tab-btn label-mat7">生火與復原</label>
-          <label for="mat8" class="mat-tab-btn label-mat8">龍頭講義</label>
-          <label for="mat9" class="mat-tab-btn label-mat9">室內課教材</label>
-        </div>
-      </div>
-      
-      <!-- 教材 1：行進用刀 -->
-      <div class="view-mat1 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">行進用刀</h3>
-        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
-      </div>
+  <!-- ================= PAGE 3: D1 上午 ================= -->
+  <div class="a4-page">
+    <h2 class="page-title">流程表 - D1 上午 (09/19)</h2>
+    <table class="timeline">
+      <thead>
+        <tr>
+          <th width="130">時間</th>
+          <th width="200">項目 / 課程內容</th>
+          <th>執行細節與備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="time-badge">07:30 – 08:00</span></td>
+          <td><div class="task-title">抵達停車點/集合</div></td>
+          <td class="task-note">07:30集合<br>熊空橋 (TWD97: 297136, 2749650)</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">08:00 – 09:00</span></td>
+          <td><div class="task-title">[課程0] 團跑/換裝</div></td>
+          <td class="task-note">各組為單位團跑</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">09:00 – 10:20</span></td>
+          <td><div class="task-title">入山 / 移動至營地</div></td>
+          <td class="task-note">
+            移動(含取水)至座標 TWD97: 297555, 2750766
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>1. 各組備磅秤，引導學員調整。2. 傳統路勿佩/用刀。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">10:20 – 10:40</span></td>
+          <td><div class="task-title">[課程1] 行進用刀</div></td>
+          <td class="task-note">
+            用刀安全/行進用刀技巧 (20分)
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>協助檢查刀具是否堪用與安全。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">10:40 – 11:00</span></td>
+          <td><div class="task-title">[課程2] 營地整理</div></td>
+          <td class="task-note">解說及操作(20分)</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">11:00 – 11:50</span></td>
+          <td><div class="task-title">練習:行進用刀/營地整理</div></td>
+          <td class="task-note">
+            行進用刀(20分) / 營地整理(30分)
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>1. 盡量找可搭雙A+Y字主繩空間。<br>2. 整理完先幫學員拉天幕(助教操作)。<br>3. [雨備] 助教先找空位拉天幕，學員下背包再操作。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">11:50 – 12:40</span></td>
+          <td><div class="task-title">午餐</div></td>
+          <td class="task-note">自理用餐，煮白飯 (50分)</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <!-- 教材 2：營地整理 -->
-      <div class="view-mat2 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">營地整理</h3>
-        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
-      </div>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 3</span>
+    </div>
+  </div>
 
-      <!-- 教材 3：營地用刀 -->
-      <div class="view-mat3 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">營地用刀</h3>
-        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
-      </div>
+  <!-- ================= PAGE 4: D1 下午 ================= -->
+  <div class="a4-page">
+    <h2 class="page-title">流程表 - D1 下午 (09/19)</h2>
+    <table class="timeline">
+      <thead>
+        <tr>
+          <th width="130">時間</th>
+          <th width="200">項目 / 課程內容</th>
+          <th>執行細節與備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="time-badge">12:40 – 13:30</span></td>
+          <td><div class="task-title">[課程3] 各帳型搭建</div></td>
+          <td class="task-note">ㄏ字/雙A/自立營柱帳型講解及操作(50分)</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">13:30 – 14:30</span></td>
+          <td><div class="task-title">練習:搭帳</div></td>
+          <td class="task-note">
+            練習(60分)
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>以教案為主，學員熟悉後再分享其他搭設技術。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">14:30 – 15:00</span></td>
+          <td><div class="task-title">[課程4] 單斜金字塔</div></td>
+          <td class="task-note">搭法教學解說</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">15:00 – 17:00</span></td>
+          <td><div class="task-title">操作：單斜搭建</div></td>
+          <td class="task-note">
+            選營地 / 營地整理 / 單斜架設(120分)
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>各帳間隔 10M+ / 小組盡量同一區塊(選定後打點) / 不用刻意挑不平處。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">17:00 – 18:30</span></td>
+          <td><div class="task-title">團炊/用餐</div></td>
+          <td class="task-note">移動至團炊區進行晚餐</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">18:40 – 20:00</span></td>
+          <td><div class="task-title">[課程5] 營地生活</div></td>
+          <td class="task-note">炊煮 / 營地生活分享</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">20:00 – 明早</span></td>
+          <td><div class="task-title">[課程6] 夜間獨處</div></td>
+          <td class="task-note">
+            獨自一人度過一晚，並使用最少物資(電力/飲食)
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>1. 回帳後可去晃一晃，不主動干擾為原則。<br>2. 協調隔日大組要看的帳。</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-      <!-- 教材 4：雙A帳搭設 -->
-      <div class="view-mat4 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">雙A帳搭設技術</h3>
-        
-        <h4 style="color:var(--primary);">一、 天幕基礎概念</h4>
-        <ul>
-          <li><strong>目的：</strong>使用最少的裝備，以最安全的方式度過一晚。</li>
-          <li><strong>容量與數量：</strong>一張 3x3 天幕約可睡 2-4 人，課程出隊通常至少準備 2 張。</li>
-          <li><strong>搭設順序：</strong>使用 2 張天幕時，需先從「地勢較低」處搭起，再覆蓋另一張天幕，以免下雨時水流進帳內。</li>
-        </ul>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 4</span>
+    </div>
+  </div>
 
-        <h4 style="color:var(--primary);">二、 主繩搭設</h4>
-        <p style="color:var(--text-muted); font-size:14px; margin-top:-10px; margin-bottom:12px; padding-left:24px;">（建議約 130-140 公分，避免帳內坐下時頭撞到主繩）</p>
-        <ol>
-          <li><strong>一般 1/3 省力系統：</strong>
-            <ul style="margin-top:8px;">
-              <li><strong>起點：</strong>在第一個固定點打「栓馬結」。</li>
-              <li><strong>拉緊：</strong>將繩拉向第二固定點，抓好距離後利用「大D扣環」纏繞 4-5 圈拉緊（需使用傘布保護樹木）。</li>
-              <li><strong>收尾：</strong>將剩餘繩子盡量靠近固定點進行雙股纏繞，不要壓繩，最後夾繩收尾並將餘繩收好。</li>
-            </ul>
-          </li>
-          <li><strong>改變方向的 1/3 省力系統：</strong>
-            <ul style="margin-top:8px;">
-              <li><strong>時機：</strong>沒有適當支點或不夠舒適時，用來改變方向以爭取較佳營地空間。</li>
-              <li><strong>作法：</strong>需 3 個支點。從固定點1（栓馬結）將繩拉向固定點2（大D纏繞），再轉向拉往固定點3（大D纏繞），會形成一個 <strong>Y 字型</strong>，最後一樣雙股纏繞夾繩收尾。</li>
-            </ul>
-          </li>
-        </ol>
+  <!-- ================= PAGE 5: D2 上午 ================= -->
+  <div class="a4-page">
+    <h2 class="page-title">流程表 - D2 上午 (09/20)</h2>
+    <table class="timeline">
+      <thead>
+        <tr>
+          <th width="130">時間</th>
+          <th width="200">項目 / 課程內容</th>
+          <th>執行細節與備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="time-badge">06:00</span></td>
+          <td><div class="task-title">起床</div></td>
+          <td class="task-note">
+            用完早餐不用收帳，於組長帳前集合
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>記得設鬧鐘。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">06:00 – 07:30</span></td>
+          <td><div class="task-title">小組巡禮</div></td>
+          <td class="task-note">
+            各組助教巡視並解說營地狀態
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>若有大隊巡禮，小組請於 06:40 講解完。如無則可解說至 07:20。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">07:30 – 08:00</span></td>
+          <td><div class="task-title">收帳</div></td>
+          <td class="task-note">撤收金字塔/裝備打包</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">08:00 – 08:20</span></td>
+          <td><div class="task-title">[課程4.1] 避難帳</div></td>
+          <td class="task-note">撤收金字塔後，集合到營本部統一示範</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">08:30 – 09:30</span></td>
+          <td><div class="task-title" style="color:var(--accent)">[測驗1] 雙A/自立營柱帳</div></td>
+          <td class="task-note">分組團體搭帳測驗 [地點:炊事帳區]</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">09:30 – 10:00</span></td>
+          <td><div class="task-title">移動</div></td>
+          <td class="task-note">至下一個操課場地 (TWD97: 297531, 2751116)</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">10:00 – 10:30</span></td>
+          <td><div class="task-title">[課程7] 用刀技巧</div></td>
+          <td class="task-note">砍/劈柴、鋸、夾刀處理、薪柴分類</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">10:30 – 11:20</span></td>
+          <td><div class="task-title">練習：砍/劈</div></td>
+          <td class="task-note">
+            刀 / 鋸實地操作
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>1. 操作安全。<br>2. 不砍活木/立木/腐木。<br>3. 提醒薪柴保留。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">11:20 – 11:50</span></td>
+          <td><div class="task-title">[課程8] 生火教學</div></td>
+          <td class="task-note">薪柴整理、地點選擇、各式架法、火媒棒製作、用火復原</td>
+        </tr>
+      </tbody>
+    </table>
 
-        <h4 style="color:var(--primary);">三、 四種帳型搭設技巧</h4>
-        <ul>
-          <li><strong>A字帳：</strong>將外帳鋪在主繩上，兩邊在鴿眼處打「普魯士結」固定於主線上（防拉扯跑位），接著由隊友各自以 45 度向內打入營釘拉撐。</li>
-          <li><strong>雙A帳（主要睡帳）：</strong>使用 2 張天幕，相交處須<strong>「重疊至少 30 公分」</strong>。一邊打普魯士結固定，重疊處則先在鴿眼打「栓馬結」，穿過另一張天幕的鴿眼後再打上「營繩結」以利調整，最後 45 度向內下釘。</li>
-          <li><strong>ㄏ字帳（炊煮與短暫休息用）：</strong>睡前活動時搭設，開口方向請勿迎風，以免太冷。</li>
-          <li><strong>自立支柱（無固定點時使用登山杖）：</strong>將登山杖穿過鴿眼並以纏繞方式與天幕固定，兩端朝 45 度方向拉好下釘。天幕兩端先在鴿眼打栓馬結，找到固定點後打營繩結調整拉撐。</li>
-        </ul>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 5</span>
+    </div>
+  </div>
 
-        <h4 style="color:var(--primary);">四、 其他注意事項</h4>
-        <ul>
-          <li><strong>中央帳高過低處置：</strong>以登山杖撐高，並利用營繩將登山杖及主繩固定。</li>
-          <li><strong>截水繩：</strong>主繩兩端務必繫上截水繩。天幕拉撐後若有下垂，下雨時雨水易順主繩流入帳內，截水繩可有效減少雨水流入。</li>
-          <li><strong>低窪處搭設：</strong>天幕外側挖設導流道，讓雨水順勢繞開。</li>
-        </ul>
-      </div>
+  <!-- ================= PAGE 6: D2 下午 ================= -->
+  <div class="a4-page">
+    <h2 class="page-title">流程表 - D2 下午 (09/20)</h2>
+    <table class="timeline">
+      <thead>
+        <tr>
+          <th width="130">時間</th>
+          <th width="200">項目 / 課程內容</th>
+          <th>執行細節與備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="time-badge">11:50 – 12:40</span></td>
+          <td><div class="task-title" style="color:var(--accent)">[測驗2] 用餐煮飯</div></td>
+          <td class="task-note">
+            必煮白飯 (煮完自行拿給助教)
+            <div class="ta-only ta-alert"><strong>💡 助教注意：</strong>煮完記得吃一口檢查。</div>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">12:40 – 13:20</span></td>
+          <td><div class="task-title">生火練習</div></td>
+          <td class="task-note">生火 / 撿柴整理</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">13:20 – 14:20</span></td>
+          <td><div class="task-title" style="color:var(--accent)">[測驗3] 刀鋸測驗</div></td>
+          <td class="task-note">砍木取柴、薪柴鋸平、劈柴</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">14:20 – 15:20</span></td>
+          <td><div class="task-title" style="color:var(--accent)">[測驗4] 生火測驗</div></td>
+          <td class="task-note">分柴、生火、場地復原</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">15:20 – 15:40</span></td>
+          <td><div class="task-title">場地復原</div></td>
+          <td class="task-note">生火 / 刀鋸痕跡復原</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">15:40 – 16:30</span></td>
+          <td><div class="task-title">行走回停車場</div></td>
+          <td class="task-note">移動(50min)</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">16:30 – 17:00</span></td>
+          <td><div class="task-title">討論暨分享</div></td>
+          <td class="task-note">各組分享與總結</td>
+        </tr>
+        <tr>
+          <td><span class="time-badge">17:00</span></td>
+          <td><div class="task-title">賦歸</div></td>
+          <td class="task-note">解散，平安下山</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <!-- 教材 5：自立營柱帳搭設 -->
-      <div class="view-mat5 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">自立營柱帳搭設</h3>
-        <p style="color:var(--text-muted);">
-          請參考以下連結：<br>
-          <a href="https://drive.google.com/file/d/1a9gfQ7DiyuTKLD9OR2larQbewpxD-4WS/view?usp=sharing" target="_blank">點擊前往查看 ↗</a>
-        </p>
-      </div>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 6</span>
+    </div>
+  </div>
 
-      <!-- 教材 6：單斜金字塔搭設 -->
-      <div class="view-mat6 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">單斜金字塔搭設</h3>
-        <p style="color:var(--text-muted);">教官很懶，還沒做教材。</p>
-      </div>
+  <!-- ================= PAGE 7: 裝備與伙食 ================= -->
+  <div class="a4-page">
+    <h2 class="page-title">裝備規範與清單</h2>
+    <table class="data-table" style="margin-bottom: 24px;">
+      <thead>
+        <tr>
+          <th width="140">分類</th>
+          <th>品項列表</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>個人基本裝備</strong></td>
+          <td>
+            <span class="item-blue">頭燈</span>, 
+            <span class="item-blue">岩盔</span>, 
+            <span class="item-blue">兩節式雨衣</span>, 
+            <span class="item-blue">刁山包</span>, 
+            備用/保暖衣物, 工作手套, 
+            <span class="item-blue">指北針</span>, 
+            <span class="item-blue">地圖</span>, 
+            醫藥/盥洗用品, 跑步鞋/跑步服
+          </td>
+        </tr>
+        <tr>
+          <td><strong>刀/鋸/生火</strong></td>
+          <td>
+            <span class="item-blue">刀</span>, 
+            <span class="item-blue">鋸</span>, 
+            打火機, 扇子/吹管, 火種
+          </td>
+        </tr>
+        <tr>
+          <td><strong>炊煮</strong></td>
+          <td>
+            水袋/儲水容器(至少2L), 
+            <span class="item-blue">登山爐具</span>, 
+            <span class="item-blue">瓦斯</span>, 
+            鍋具, 餐具, 
+            <span class="item-blue">白米飯</span>, 
+            團炊用具
+          </td>
+        </tr>
+        <tr>
+          <td><strong>搭帳</strong></td>
+          <td>
+            <span class="item-blue">登山杖</span>, 
+            <span class="item-blue">外帳（2M×3M+）</span>, 
+            <span class="item-blue">輔助繩(6~8mm* 10M+)</span>, 
+            營繩釘, 勾環(大D*2), 地布, 
+            <span class="item-blue">大黑塑膠袋*2</span>
+          </td>
+        </tr>
+        <tr class="ta-only">
+          <td><strong>助教攜帶</strong></td>
+          <td><span style="color:var(--ta-tag-text); font-weight:700;">無線電 (每一組分配一台，由該組助教攜帶)</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="color:var(--text-muted); font-size:13.5px; margin-top:-14px; margin-bottom:30px;">
+      註：以上<span class="item-blue">藍底字體</span>為課程操作必備項目，如有替代物品請提前與教官/助教討論。
+    </p>
 
-      <!-- 教材 7：生火與復原 -->
-      <div class="view-mat7 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">野外生火操作與復原</h3>
-        
-        <h4 style="color:var(--primary);">一、 核心觀念</h4>
-        <ul>
-          <li><strong>生火三元素：</strong>溫度、空氣（氧氣對流）、燃料。</li>
-          <li><strong>準備三步驟：</strong>找柴、分柴、架柴。</li>
-        </ul>
+    <h2 class="page-title">伙食說明</h2>
+    <div style="margin-bottom:14px;">
+      <span class="tag-red">注意事項</span><strong>不可煮泡麵／乾燥飯。</strong>
+    </div>
+    <p style="margin-bottom: 12px;"><strong>晚餐團炊規則：</strong>菜色不限、需煮白飯，份量自行安排，但不可有剩餘廚餘。<span class="ta-only" style="color:var(--ta-tag-text); font-weight:700;">不用準備助教份量。</span></p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>餐別</th>
+          <th>學員 Day 1</th>
+          <th>學員 Day 2</th>
+          <th class="ta-only">助教安排</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>早餐</strong></td>
+          <td>自理</td>
+          <td>自理</td>
+          <td class="ta-only">D1/D2 均自理</td>
+        </tr>
+        <tr>
+          <td><strong>午餐</strong></td>
+          <td>自理 (煮白飯)</td>
+          <td>自理 <strong style="color:var(--accent);">(必煮白飯測驗)</strong></td>
+          <td class="ta-only">D1/D2 均自理</td>
+        </tr>
+        <tr>
+          <td><strong>晚餐</strong></td>
+          <td>團炊 <strong style="color:var(--accent);">(必煮白飯)</strong></td>
+          <td>NA (下山)</td>
+          <td class="ta-only">D1 團炊</td>
+        </tr>
+      </tbody>
+    </table>
 
-        <h4 style="color:var(--primary);">二、 步驟一：找柴</h4>
-        <ul>
-          <li><strong>實用工具：</strong>手套（保護）、鋸刀（處理）、繩子（綑綁）。</li>
-          <li><strong>辨識乾燥：</strong>折斷枯枝時有清脆斷裂聲。</li>
-          <li><strong>雨天找柴訣竅：</strong>
-            <ul style="margin-top:8px;">
-              <li>避開林間地面落葉與樹幹基部的木柴。</li>
-              <li><strong>抬頭找：</strong>尋找樹林與天空交界縫隙正下方的枯枝。</li>
-              <li><strong>找樹上：</strong>折取仍連在樹幹上的枯枝，通常內部仍乾燥。</li>
-              <li><strong>找粗木：</strong>蒐集直徑 > 6公分的粗木，削去濕皮取乾燥內部做火媒棒。</li>
-            </ul>
-          </li>
-          <li><strong>柴火保護：</strong>使用大樹葉或樹皮替木柴擋雨。</li>
-        </ul>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 7</span>
+    </div>
+  </div>
 
-        <h4 style="color:var(--primary);">三、 步驟二：分柴</h4>
-        <p style="color:var(--text-muted); font-size:14px; margin-top:-10px; margin-bottom:12px; padding-left:24px;">目的：集中管理，推估燃料是否足夠整晚使用。</p>
-        <ul>
-          <li><strong>依「易燃性」分類：</strong>
-            <ul style="margin-top:8px;">
-              <li><strong>軟木（松、杉等）：</strong>易燃、富油脂，作初期燃料，餘炭少。</li>
-              <li><strong>硬木（相思、櫟等）：</strong>不易燃、火力大且持久，作基本燃料。</li>
-            </ul>
-          </li>
-          <li><strong>依「粗細」分類：</strong>
-            <ul style="margin-top:8px;">
-              <li><strong>火種：</strong>乾草、乾芒花、火煤棒。</li>
-              <li><strong>發火材：</strong>遇火苗即迅速燃燒（松針、木屑等）。</li>
-              <li><strong>引火材（一級）：</strong>約筆芯粗（直徑 0.2~0.5公分）。</li>
-              <li><strong>引火材（二級）：</strong>約筆粗（直徑 1~1.5公分）。</li>
-              <li><strong>引火材（三級）：</strong>約童軍棍粗（直徑 3公分）。</li>
-              <li><strong>燃燒材：</strong>直徑大於 3公分。</li>
-            </ul>
-          </li>
-        </ul>
+  <!-- ================= PAGE 8: 測驗項目表 ================= -->
+  <div class="a4-page">
+    <h2 class="page-title">測驗項目表</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>項目</th>
+          <th>測驗內容與標準</th>
+          <th>執行時段</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>[測驗1] 團體搭帳</strong></td>
+          <td><strong>雙A帳 / 自立營柱帳</strong><br>以小組為單位完成指定帳型搭建與架設。</td>
+          <td>Day 2<br>08:30 – 09:30</td>
+        </tr>
+        <tr>
+          <td><strong>[測驗2] 炊煮</strong></td>
+          <td><strong>午餐煮白飯</strong><br>使用個人裝備及鍋具炊煮白飯，完成後整鍋給助教檢查。</td>
+          <td>Day 2<br>11:50 – 12:40</td>
+        </tr>
+        <tr>
+          <td><strong>[測驗3] 刀鋸操作</strong></td>
+          <td><strong>砍木取柴、薪柴鋸平、劈柴</strong><br>以刀/鋸完成指定規格之木材處理。</td>
+          <td>Day 2<br>13:20 – 14:20</td>
+        </tr>
+        <tr>
+          <td><strong>[測驗4] 生火復原</strong></td>
+          <td><strong>分柴、生火、復原</strong><br>薪柴分類、引火維持燃燒，並在結束後將場地徹底復原。</td>
+          <td>Day 2<br>14:20 – 15:20</td>
+        </tr>
+      </tbody>
+    </table>
 
-        <h4 style="color:var(--primary);">四、 步驟三：架柴與點火</h4>
-        <ul>
-          <li><strong>常見形式：</strong>金字塔型、獵人灶型、井字型。</li>
-          <li><strong>架柴 5 原則：</strong>
-            <ol style="margin-top:8px;">
-              <li>避開草地，必要時須挖走草皮，事後滅跡堆回。</li>
-              <li>確實整地，清除周邊易燃物防延燒。</li>
-              <li>確定風向，預留通風與點火位置。</li>
-              <li>由細到粗，以足量發火柴與引火柴為基底。</li>
-              <li><strong>務必墊高離地：</strong>用石頭、粗木或樹皮當基座，避開地面濕氣。</li>
-            </ol>
-          </li>
-          <li><strong>點火成功關鍵：</strong>
-            <ul style="margin-top:8px;">
-              <li>勿過度拘泥堆疊形狀而浪費時間。</li>
-              <li>取火絨、發火柴與引火柴準備必須「足量」。</li>
-              <li><strong>足量標準：</strong>雙手拇指與中指互碰時，能一起抱握住的數量。</li>
-            </ul>
-          </li>
-        </ul>
-
-        <h4 style="color:var(--primary);">五、 滅火與復原</h4>
-        <ul>
-          <li><strong>安全：</strong>木炭灰燼溫度高，嚴禁直接潑水，以免灰燼或蒸氣燙傷。</li>
-          <li><strong>環保：</strong>落實 LNT（無痕山林）原則，將場地恢復原狀。</li>
-        </ul>
-
-        <h4 style="color:var(--primary);">六、 火媒棒、火種製作</h4>
-        <ul>
-          <li><span style="color:var(--text-muted);">此實作項目請參照課程現場刀具運用與削製角度示範。</span></li>
-        </ul>
-      </div>
-      
-      <!-- 教材 8：龍頭講義 -->
-      <div class="view-mat8 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">龍頭講義</h3>
-        <p style="color:var(--text-muted);">
-          請參考以下連結：<br>
-          <a href="https://drive.google.com/file/d/1Q52XUGWQEl0h37RQb1xg0v3cj4LwfseC/view?usp=sharing" target="_blank">點擊前往查看 ↗</a>
-        </p>
-      </div>
-
-      <!-- 教材 9：室內課講義 -->
-      <div class="view-mat9 view-mat-content">
-        <h3 style="color:var(--accent); margin-top:0;">室內課講義</h3>
-        <p style="color:var(--text-muted);">
-          請參考以下連結：<br>
-          <a href="https://drive.google.com/file/d/1wfSpr1BRVlmfR0QROIKa0AO7GoM0VsCf/view?usp=sharing" target="_blank">點擊前往查看 ↗</a>
-        </p>
-      </div>
-
-    </section>
-
-    <!-- 課程目標大綱與執行細則 -->
-    <details class="section-panel" id="course-content">
-      <summary>教案大綱與執行細則</summary>
-      <div class="section-body">
-        <ul style="margin-bottom: 20px;">
-          <li><span class="tag gray">輕量化</span>檢視各裝備的重要性及重量。</li>
-          <li><span class="tag gray">相互學習</span>團隊合作默契培養，觀察並學習他人優點。</li>
-        </ul>
-        <div class="course-grid">
-          <!-- 課程 0 -->
-          <div class="course-card">
-            <h4>[課程0] 跑步/換裝
-              <div class="meta"><span class="tag gray">60 分鐘</span><span class="tag">助教 1 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>慢跑約 6 分半 ~ 7 分速</li>
-              <li>1 名助教領跑，15 分鐘折返</li>
-            </ol>
-            <h5>注意事項</h5>
-            <ul>
-              <li>無法跑步者於集合點待命，至少 1 名助教陪同</li>
-              <li>提醒加速換裝時間</li>
-              <li>盡可能小組集體跑步，無須強調速度</li>
-            </ul>
-          </div>
-          <!-- 課程 1 -->
-          <div class="course-card">
-            <h4>[課程1] 行進用刀
-              <div class="meta"><span class="tag gray">講解 15m / 操作 25m</span><span class="tag">助教 1 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>用刀安全：佩/拔/抽/持刀方式、使用距離、用刀時機（能繞則繞）</li>
-              <li>障礙物處理（藤蔓、芒草、倒木）</li>
-            </ol>
-            <h5>注意事項</h5>
-            <ul>
-              <li>學員操作時注意彼此距離</li>
-              <li>刀具有問題立刻向助教反映</li>
-            </ul>
-          </div>
-          <!-- 課程 2 -->
-          <div class="course-card">
-            <h4>[課程2] 營地整理
-              <div class="meta"><span class="tag gray">講解 20 分鐘</span><span class="tag">助教 1 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>選擇營地：地點、地勢、處理難度、環境（蚊蟲/潮濕）、排水</li>
-              <li>實際操作：搬離雜物（石塊/枯枝倒木）→ 掃草（刀法：掃）→ 草根（鋸）</li>
-              <li>草類可分開整理作後續席夢思使用</li>
-            </ol>
-            <h5>注意事項</h5>
-            <ul>
-              <li>學員操作時注意彼此距離</li>
-              <li>掃刀、鋸平時避免尻到石頭，傷刀</li>
-            </ul>
-          </div>
-          <!-- 課程 3 -->
-          <div class="course-card">
-            <h4>[課程3] A/雙A/自立營柱帳型
-              <div class="meta"><span class="tag gray">講解 30 分鐘</span><span class="tag">助教 2 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>搭帳位置、固定點（樹）選擇</li>
-              <li>架設方式 1/3 省力系統 + Y字轉換方向</li>
-              <li>搭帳、ㄏ字開口選擇</li>
-            </ol>
-          </div>
-          <!-- 課程 4 -->
-          <div class="course-card">
-            <h4>[課程4] 單斜金字塔
-              <div class="meta"><span class="tag gray">講解 20 分鐘</span><span class="tag">助教 1 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>架設步驟解說</li>
-              <li>席蒙思床墊製作（大黑 + 草類）</li>
-              <li>現場應變</li>
-            </ol>
-            <h5>注意事項</h5>
-            <ul>
-              <li>紀錄學員營地位置（離線地圖打點）</li>
-            </ul>
-          </div>
-          <!-- 課程 5 -->
-          <div class="course-card">
-            <h4>[課程5] 營地生活
-              <div class="meta"><span class="tag gray">講解 15-30 分鐘</span><span class="tag">助教 1 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>團炊準備分享</li>
-              <li>營火用途：廚餘處理（勿倒油水）、濕紙巾（塑膠類勿燒）</li>
-              <li>洗澡（清洗）：一公升洗澡法</li>
-              <li>衣物更換：多日行程</li>
-              <li>保暖：如何沒睡袋度過中階課程</li>
-              <li>上廁所/清潔：洗屁屁</li>
-              <li>防蚊蟲、方法</li>
-              <li>夜間離開營地與回歸：營地留（亮）燈</li>
-              <li>集水：天幕接水、水瓶插竹枝</li>
-              <li>好用小工具分享</li>
-            </ol>
-          </div>
-          <!-- 課程 7 -->
-          <div class="course-card">
-            <h4>[課程7] 營地用刀
-              <div class="meta"><span class="tag gray">講解 30 分鐘</span><span class="tag">助教 1 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>用刀安全提醒</li>
-              <li>砍柴技術</li>
-              <li>鋸：固定薪柴、拉回時發力、變換角度增加效率</li>
-              <li>劈柴操作</li>
-              <li>夾刀/夾鋸處理</li>
-            </ol>
-            <h5>注意事項</h5>
-            <ul>
-              <li>練習劈柴時勿站對向</li>
-            </ul>
-          </div>
-          <!-- 課程 8 -->
-          <div class="course-card">
-            <h4>[課程8] 生火教學
-              <div class="meta"><span class="tag gray">講解 30 分鐘</span><span class="tag">助教 1 名</span></div>
-            </h4>
-            <h5>操作重點</h5>
-            <ol>
-              <li>生火點選擇/架設注意事項</li>
-              <li>薪柴分類</li>
-              <li>結構架設（隧道/井字）</li>
-              <li>火媒棒/火種運用</li>
-              <li>控火與復原</li>
-            </ol>
-            <h5>注意事項</h5>
-            <ul>
-              <li>學員使用焚火盆生火，確保火源離地</li>
-              <li>注意結束後是否復原</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <!-- 分組名單與助教編制 -->
-    <details class="section-panel" id="teams">
-      <summary>分組名單 (學員與助教編制)</summary>
-      <div class="section-body">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th width="90">組別</th>
-              <th>學員名單</th>
-              <th>負責助教</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>第 1 組</strong></td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge">吳則辰</span>
-                  <span class="name-badge">傅傑</span>
-                  <span class="name-badge">黃雨柔</span>
-                  <span class="name-badge">許荷</span>
-                  <span class="name-badge">黃郁雯</span>
-                </div>
-              </td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge ta-badge">林孟璇</span>
-                  <span class="name-badge ta-badge">Joe Fu</span>
-                  <span class="name-badge ta-badge">Sam Hsiang</span>
-                  <span class="name-badge ta-badge">邱小白</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>第 2 組</strong></td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge">周根主</span>
-                  <span class="name-badge">林政穎</span>
-                  <span class="name-badge">陳盈璇</span>
-                  <span class="name-badge">羅鈺潔</span>
-                  <span class="name-badge">林佳璇</span>
-                </div>
-              </td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge ta-badge">Jerry Ko</span>
-                  <span class="name-badge ta-badge">Stella Yao</span>
-                  <span class="name-badge ta-badge">林小萬</span>
-                  <span class="name-badge ta-badge">suzosam</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>第 3 組</strong></td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge">林長青</span>
-                  <span class="name-badge">林煥祥</span>
-                  <span class="name-badge">黃心滿</span>
-                  <span class="name-badge">何迎竹</span>
-                  <span class="name-badge">趙雲</span>
-                  <span class="name-badge">陳尹屏</span>
-                </div>
-              </td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge ta-badge">hengchia.liang</span>
-                  <span class="name-badge ta-badge">Tingchun Yeh</span>
-                  <span class="name-badge ta-badge">hank.wu</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td><strong>第 4 組</strong></td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge">李明遠</span>
-                  <span class="name-badge">周泳震</span>
-                  <span class="name-badge">劉奕和</span>
-                  <span class="name-badge">楊淑娥</span>
-                  <span class="name-badge">李杰璇</span>
-                  <span class="name-badge">邱盈琳</span>
-                </div>
-              </td>
-              <td>
-                <div class="name-grid">
-                  <span class="name-badge ta-badge">Akei Wang</span>
-                  <span class="name-badge ta-badge">吳啟典</span>
-                  <span class="name-badge ta-badge">Dennis Hung</span>
-                  <span class="name-badge ta-badge">曾嘉怡</span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-
-    <!-- 裝備清單 -->
-    <details class="section-panel" id="equipment" open>
-      <summary>裝備規範與清單</summary>
-      <div class="section-body">
-        <h3 style="color:var(--primary); margin-top:0;">學員必帶裝備</h3>
-        <table class="data-table" style="margin-bottom:20px;">
-          <thead>
-            <tr>
-              <th>分類</th>
-              <th>品項列表</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>個人基本裝備</strong></td>
-              <td>
-                <span class="item-blue">頭燈</span>, 
-                <span class="item-blue">岩盔</span>, 
-                <span class="item-blue">兩節式雨衣</span>, 
-                <span class="item-blue">刁山包</span>, 
-                備用/保暖衣物, 工作手套, 
-                <span class="item-blue">指北針</span>, 
-                <span class="item-blue">地圖</span>, 
-                醫藥/盥洗用品, 跑步鞋/跑步服
-              </td>
-            </tr>
-            <tr>
-              <td><strong>刀/鋸/生火</strong></td>
-              <td>
-                <span class="item-blue">刀</span>, 
-                <span class="item-blue">鋸</span>, 
-                打火機, 扇子/吹管, 火種
-              </td>
-            </tr>
-            <tr>
-              <td><strong>炊煮</strong></td>
-              <td>
-                水袋/儲水容器(至少2L), 
-                <span class="item-blue">登山爐具</span>, 
-                <span class="item-blue">瓦斯</span>, 
-                鍋具, 餐具, 
-                <span class="item-blue">白米飯</span>, 
-                團炊用具
-              </td>
-            </tr>
-            <tr>
-              <td><strong>搭帳</strong></td>
-              <td>
-                <span class="item-blue">登山杖</span>, 
-                <span class="item-blue">外帳（2M×3M+）</span>, 
-                <span class="item-blue">輔助繩(6~8mm* 10M+)</span>, 
-                營繩釘, 勾環(大D*2), 地布, 
-                <span class="item-blue">大黑塑膠袋*2</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <h3 style="color:var(--primary);">助教攜帶物品</h3>
-        <ul>
-          <li><strong>通訊設備：</strong>每一組分配一台無線電，由該組助教攜帶。</li>
-        </ul>
-        <p style="color:var(--text-muted); font-size:14px; margin-top:16px;">
-          註：以上<span class="item-blue">藍底字體</span>為課程操作必備項目，如有替代物品請提前與教官/助教討論。
-        </p>
-      </div>
-    </details>
-
-    <!-- 伙食規定 -->
-    <details class="section-panel" id="meals">
-      <summary>伙食規定</summary>
-      <div class="section-body">
-        <div style="margin-bottom:16px;">
-          <span class="tag red">伙食禁令</span><strong>不可煮泡麵／乾燥飯。</strong>
-        </div>
-        <p><strong>晚餐團炊規則：</strong>菜色不限、需煮白飯，份量自行安排，但不可有剩餘廚餘。不用準備助教份量。</p>
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>餐別</th>
-              <th>學員 Day 1</th>
-              <th>學員 Day 2</th>
-              <th>助教安排</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>早餐</strong></td>
-              <td>自理</td>
-              <td>自理</td>
-              <td>D1/D2 均自理</td>
-            </tr>
-            <tr>
-              <td><strong>午餐</strong></td>
-              <td>自理(煮白飯)</td>
-              <td>自理 <strong style="color:var(--accent);">(必煮白飯)</strong></td>
-              <td>D1/D2 均自理</td>
-            </tr>
-            <tr>
-              <td><strong>晚餐</strong></td>
-              <td>團炊 <strong style="color:var(--accent);">(必煮白飯)</strong></td>
-              <td>NA (下山)</td>
-              <td>D1 團炊</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-
-    <!-- 測驗項目 -->
-    <details class="section-panel" id="tests">
-      <summary>測驗項目</summary>
-      <div class="section-body">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>項目</th>
-              <th>測驗內容與標準</th>
-              <th>執行時段</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>[測驗1] 團體搭帳</strong></td>
-              <td><strong>雙A帳 / 自立營柱帳</strong><br>以小組為單位完成指定帳型搭建與架設。</td>
-              <td>Day 2<br>08:30 – 09:30</td>
-            </tr>
-            <tr>
-              <td><strong>[測驗2] 炊煮</strong></td>
-              <td><strong>午餐煮白飯</strong><br>使用個人裝備及鍋具炊煮白飯，完成後整鍋提交助教檢查。</td>
-              <td>Day 2<br>11:50 – 12:40</td>
-            </tr>
-            <tr>
-              <td><strong>[測驗3] 刀鋸操作</strong></td>
-              <td><strong>砍木取柴、薪柴鋸平、劈柴</strong><br>以刀/鋸完成指定規格之木材處理。</td>
-              <td>Day 2<br>13:20 – 14:20</td>
-            </tr>
-            <tr>
-              <td><strong>[測驗4] 生火復原</strong></td>
-              <td><strong>分柴、生火、復原</strong><br>薪柴分類、引火、維持燃燒，並在測驗結束後將場地痕跡徹底復原。</td>
-              <td>Day 2<br>14:20 – 15:20</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </details>
-
-    <!-- ★ 新增：平安下山標語 ★ -->
-    <div style="margin-top: 30px; margin-bottom: 30px; padding: 25px; border: 1px dashed var(--border); border-radius: 8px; text-align: center; background: var(--surface);">
+    <div style="margin-top: 40px; padding: 25px; border: 1px dashed var(--border); border-radius: 8px; text-align: center; background: var(--surface);">
       <p style="margin:0; font-size: 18px; font-weight: 800; color: var(--primary); letter-spacing: 0.1em;">🌲 安全第一、平安下山！</p>
     </div>
 
-  </main>
-  <footer style="text-align:center; padding: 0 20px 40px 20px; color:var(--border);">
-    小腳丫登山訓練營 2026 宿營實務戶外課｜助教專用執行手冊
-  </footer>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>Page 8</span>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       下面是助教專屬的隱藏頁面 (預設隱藏，解鎖後顯示)
+       ========================================================================= -->
+
+  <!-- ================= TA PAGE 1: 助教行政任務 ================= -->
+  <div class="a4-page ta-only" style="height: auto; min-height: auto; padding-bottom: 25mm;">
+    <h2 class="page-title title-important"><span>📝</span> 助教任務與交通調查</h2>
+    <div style="background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--primary); padding: 20px; border-radius: 8px;">
+      <p style="margin-top: 0; margin-bottom: 20px; font-size: 15px;">請各位助教於出發前，至下方 Google 試算表完成<strong>「交通飲食」</strong>與<strong>「教學分配」</strong>的填寫作業，以利後續行政統籌。</p>
+      <a href="https://docs.google.com/spreadsheets/d/1Bs26ZKbQVA9BkZajjo8ku8c2wB-hUGJXf-WkeiDGp08/edit?gid=1791898238#gid=1791898238" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--primary); color: #ffffff; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 15px; border: 1px solid var(--primary-dark);">
+        前往 Google 試算表填寫 ↗
+      </a>
+    </div>
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>TA - Admin</span>
+    </div>
+  </div>
+
+  <!-- ================= TA PAGE 2: 教材大綱與圖文指引 ================= -->
+  <div class="a4-page ta-only" style="height: auto; min-height: 297mm; overflow: visible; padding-bottom: 25mm;">
+    <h2 class="page-title title-important"><span>📚</span> 教材大綱與圖文指引</h2>
+    
+    <input type="radio" name="mat-tabs" id="mat1">
+    <input type="radio" name="mat-tabs" id="mat2">
+    <input type="radio" name="mat-tabs" id="mat3"> 
+    <input type="radio" name="mat-tabs" id="mat4" checked>
+    <input type="radio" name="mat-tabs" id="mat5">
+    <input type="radio" name="mat-tabs" id="mat6">
+    <input type="radio" name="mat-tabs" id="mat7">
+    <input type="radio" name="mat-tabs" id="mat8">
+    <input type="radio" name="mat-tabs" id="mat9">
+    
+    <div class="mat-tabs-controller">
+      <label for="mat1" class="mat-tab-btn label-mat1">行進用刀</label>
+      <label for="mat2" class="mat-tab-btn label-mat2">營地整理</label>
+      <label for="mat3" class="mat-tab-btn label-mat3">營地用刀</label>
+      <label for="mat4" class="mat-tab-btn label-mat4">雙A帳</label>
+      <label for="mat5" class="mat-tab-btn label-mat5">自立帳</label>
+      <label for="mat6" class="mat-tab-btn label-mat6">單斜</label>
+      <label for="mat7" class="mat-tab-btn label-mat7">生火</label>
+      <label for="mat8" class="mat-tab-btn label-mat8">龍頭講義</label>
+      <label for="mat9" class="mat-tab-btn label-mat9">室內講義</label>
+    </div>
+    
+    <div class="view-mat1 view-mat-content"><h4 style="margin-top:0;">行進用刀</h4><p style="color:var(--text-muted);">教官很懶，還沒做教材。</p></div>
+    <div class="view-mat2 view-mat-content"><h4 style="margin-top:0;">營地整理</h4><p style="color:var(--text-muted);">教官很懶，還沒做教材。</p></div>
+    <div class="view-mat3 view-mat-content"><h4 style="margin-top:0;">營地用刀</h4><p style="color:var(--text-muted);">教官很懶，還沒做教材。</p></div>
+    
+    <div class="view-mat4 view-mat-content">
+      <h4 style="margin-top:0;">一、 天幕基礎概念</h4>
+      <ul>
+        <li><strong>目的：</strong>使用最少的裝備，以最安全的方式度過一晚。</li>
+        <li><strong>容量與數量：</strong>一張 3x3 天幕約可睡 2-4 人，通常至少準備 2 張。</li>
+        <li><strong>搭設順序：</strong>使用 2 張天幕時，需先從「地勢較低」處搭起，再覆蓋另一張天幕，以免下雨時水流進帳內。</li>
+      </ul>
+      <h4>二、 主繩搭設</h4>
+      <p style="color:var(--text-muted); font-size:14px; margin-top:-10px; margin-bottom:12px; padding-left:24px;">（建議約 130-140 公分，避免帳內坐下時頭撞到主繩）</p>
+      <ol>
+        <li><strong>一般 1/3 省力系統：</strong>
+          <ul style="margin-top:8px;">
+            <li><strong>起點：</strong>在第一個固定點打「栓馬結」。</li>
+            <li><strong>拉緊：</strong>將繩拉向第二固定點，抓好距離後利用「大D扣環」纏繞 4-5 圈拉緊（需使用傘布保護樹木）。</li>
+            <li><strong>收尾：</strong>將剩餘繩子盡量靠近固定點進行雙股纏繞，不要壓繩，最後夾繩收尾並將餘繩收好。</li>
+          </ul>
+        </li>
+        <li><strong>改變方向的 1/3 省力系統：</strong>
+          <ul style="margin-top:8px;">
+            <li><strong>時機：</strong>沒有適當支點或不夠舒適時，用來改變方向以爭取較佳空間。</li>
+            <li><strong>作法：</strong>需 3 個支點。從固定點1拉向固定點2（大D纏繞），再轉向拉往固定點3（大D纏繞），形成 <strong>Y 字型</strong>，雙股纏繞夾繩收尾。</li>
+          </ul>
+        </li>
+      </ol>
+      <h4>三、 四種帳型搭設技巧</h4>
+      <ul>
+        <li><strong>A字帳：</strong>將外帳鋪在主繩上，兩邊在鴿眼處打「普魯士結」固定於主線上，接著各自以 45 度向內打入營釘拉撐。</li>
+        <li><strong>雙A帳（主要睡帳）：</strong>使用 2 張天幕，相交處須<strong>「重疊至少 30 公分」</strong>。一邊打普魯士結固定，重疊處先在鴿眼打「栓馬結」，穿過另一張天幕的鴿眼後打上「營繩結」調整，最後下釘。</li>
+        <li><strong>ㄏ字帳（炊煮休息用）：</strong>睡前活動時搭設，開口方向請勿迎風，以免太冷。</li>
+        <li><strong>自立支柱：</strong>登山杖穿過鴿眼並以纏繞方式與天幕固定，兩端朝 45 度方向拉好下釘。</li>
+      </ul>
+      <h4>四、 其他注意事項</h4>
+      <ul>
+        <li><strong>截水繩：</strong>主繩兩端務必繫上截水繩。避免下雨時雨水順主繩流入帳內。</li>
+        <li><strong>低窪處搭設：</strong>天幕外側挖設導流道，讓雨水順勢繞開。</li>
+      </ul>
+    </div>
+    
+    <div class="view-mat5 view-mat-content">
+      <h4 style="margin-top:0;">自立營柱帳搭設</h4>
+      <p style="color:var(--text-muted);">請參考：<a href="https://drive.google.com/file/d/1a9gfQ7DiyuTKLD9OR2larQbewpxD-4WS/view?usp=sharing" target="_blank" rel="noopener noreferrer">點擊前往查看 ↗</a></p>
+    </div>
+    <div class="view-mat6 view-mat-content"><h4 style="margin-top:0;">單斜金字塔搭設</h4><p style="color:var(--text-muted);">教官很懶，還沒做教材。</p></div>
+    
+    <div class="view-mat7 view-mat-content">
+      <h4 style="margin-top:0;">一、 核心觀念</h4>
+      <ul><li><strong>生火三元素：</strong>溫度、空氣（氧氣對流）、燃料。</li><li><strong>三步驟：</strong>找柴、分柴、架柴。</li></ul>
+      <h4>二、 找柴訣竅</h4>
+      <ul>
+        <li><strong>辨識乾燥：</strong>折斷枯枝時有清脆斷裂聲。</li>
+        <li><strong>雨天：</strong>尋找樹林與天空交界縫隙正下方的枯枝、連在樹幹上的枯枝，或取粗木內部。</li>
+      </ul>
+      <h4>三、 分柴分類</h4>
+      <ul>
+        <li><strong>火種：</strong>乾草、乾芒花、火煤棒。</li>
+        <li><strong>發火材：</strong>遇火苗即迅速燃燒（松針、木屑等）。</li>
+        <li><strong>引火材（一至三級）：</strong>從筆芯粗到童軍棍粗。</li>
+        <li><strong>燃燒材：</strong>直徑大於 3公分。</li>
+      </ul>
+      <h4>四、 架柴與點火</h4>
+      <ul>
+        <li><strong>原則：</strong>避開草地整地、預留通風口、由細到粗。<strong>務必墊高離地</strong>避開地面濕氣。</li>
+        <li><strong>足量標準：</strong>火絨與發火柴必須「雙手拇指與中指互碰時能一起抱握住的數量」。</li>
+      </ul>
+    </div>
+    
+    <div class="view-mat8 view-mat-content"><h4 style="margin-top:0;">龍頭講義</h4><p><a href="https://drive.google.com/file/d/1Q52XUGWQEl0h37RQb1xg0v3cj4LwfseC/view?usp=sharing" target="_blank" rel="noopener noreferrer">點擊前往查看 ↗</a></p></div>
+    <div class="view-mat9 view-mat-content"><h4 style="margin-top:0;">室內課講義</h4><p><a href="https://drive.google.com/file/d/1wfSpr1BRVlmfR0QROIKa0AO7GoM0VsCf/view?usp=sharing" target="_blank" rel="noopener noreferrer">點擊前往查看 ↗</a></p></div>
+
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>TA - Materials</span>
+    </div>
+  </div>
+
+  <!-- ================= TA PAGE 3: 教案大綱與執行細則 ================= -->
+  <div class="a4-page ta-only" style="height: auto; min-height: 297mm; overflow: visible; padding-bottom: 25mm;">
+    <h2 class="page-title title-important"><span>🔒</span> 教案大綱與執行細則</h2>
+    
+    <div class="course-grid">
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程0] 跑步/換裝<div class="meta"><span class="tag gray">60m</span><span class="tag gray">助教1名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol><li>慢跑約 6 分半 ~ 7 分速</li><li>1 名助教領跑，15 分鐘折返</li></ol>
+        <h5>注意事項</h5>
+        <ul><li>無法跑步者於集合點待命，至少 1 名助教陪同</li><li>盡可能小組集體跑步，無須強調速度</li></ul>
+      </div>
+      
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程1] 行進用刀<div class="meta"><span class="tag gray">40m</span><span class="tag gray">助教1名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol><li>用刀安全：佩/拔/抽/持刀方式、使用距離、時機</li><li>障礙物處理（藤蔓、芒草、倒木）</li></ol>
+        <h5>注意事項</h5>
+        <ul><li>學員操作時注意彼此距離，有問題立刻反映</li></ul>
+      </div>
+
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程2] 營地整理<div class="meta"><span class="tag gray">20m</span><span class="tag gray">助教1名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol><li>選擇營地：地點、地勢、處理難度、排水</li><li>操作：搬離雜物→ 掃草→ 草根（鋸）</li></ol>
+        <h5>注意事項</h5>
+        <ul><li>掃刀、鋸平時避免尻到石頭傷刀</li></ul>
+      </div>
+
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程3] 雙A/自立帳<div class="meta"><span class="tag gray">30m</span><span class="tag gray">助教2名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol><li>搭帳位置、固定點（樹）選擇</li><li>架設方式 1/3 省力系統 + Y字轉換方向</li><li>搭帳、ㄏ字開口選擇</li></ol>
+      </div>
+
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程4] 單斜金字塔<div class="meta"><span class="tag gray">20m</span><span class="tag gray">助教1名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol><li>架設步驟解說</li><li>席蒙思床墊製作（大黑 + 草類）</li></ol>
+        <h5>注意事項</h5>
+        <ul><li>紀錄學員營地位置（離線地圖打點）</li></ul>
+      </div>
+
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程5] 營地生活<div class="meta"><span class="tag gray">30m</span><span class="tag gray">助教1名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol>
+          <li>營火用途：廚餘處理(勿倒油水)、濕紙巾(塑膠勿燒)</li>
+          <li>洗澡與上廁所：一公升洗澡法、洗屁屁</li>
+          <li>夜間離開營地與回歸：營地留（亮）燈</li>
+        </ol>
+      </div>
+
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程7] 營地用刀<div class="meta"><span class="tag gray">30m</span><span class="tag gray">助教1名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol><li>砍柴技術與劈柴操作</li><li>鋸：固定薪柴、變換角度增加效率</li><li>夾刀/夾鋸處理</li></ol>
+        <h5>注意事項</h5>
+        <ul><li>練習劈柴時勿站對向</li></ul>
+      </div>
+
+      <div class="course-card">
+        <h4 style="font-size:16.5px;">[課程8] 生火教學<div class="meta"><span class="tag gray">30m</span><span class="tag gray">助教1名</span></div></h4>
+        <h5>操作重點</h5>
+        <ol><li>生火點選擇/架設注意事項</li><li>結構架設（隧道/井字）</li><li>火媒棒/火種運用與控火復原</li></ol>
+        <h5>注意事項</h5>
+        <ul><li>使用焚火盆生火確保火源離地</li></ul>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>小腳丫中13階 宿營實務戶外課</span>
+      <span>TA - Execution</span>
+    </div>
+  </div>
+
+  <!-- 切換腳本與助教密碼鎖 -->
+  <script>
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const htmlEl = document.documentElement;
+
+    // 深淺色偏好記憶
+    const currentTheme = localStorage.getItem('site-theme') || 'dark';
+    setTheme(currentTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const activeTheme = htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      setTheme(activeTheme);
+    });
+
+    function setTheme(theme) {
+      if (theme === 'light') {
+        htmlEl.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('site-theme', 'light');
+      } else {
+        htmlEl.removeAttribute('data-theme');
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('site-theme', 'dark');
+      }
+    }
+
+    // ==========================================
+    // 🔒 助教密碼解鎖機制 (預設密碼: 8888)
+    // ==========================================
+    const taAuthBtn = document.getElementById('taAuthBtn');
+    const taLockIcon = document.getElementById('taLockIcon');
+    const taBtnText = document.getElementById('taBtnText');
+    const TA_PASSWORD = "7533967"; // ← 若要更改密碼，請修改這裡
+
+    // 檢查是否曾經解鎖過
+    if (localStorage.getItem('is-ta-unlocked') === 'true') {
+      document.body.classList.add('is-ta-mode');
+      taLockIcon.textContent = '🔓';
+      taBtnText.textContent = '助教模式中';
+    }
+
+    taAuthBtn.addEventListener('click', () => {
+      if (document.body.classList.contains('is-ta-mode')) {
+        if (confirm("是否要登出助教模式並隱藏專屬資訊？")) {
+          document.body.classList.remove('is-ta-mode');
+          localStorage.setItem('is-ta-unlocked', 'false');
+          taLockIcon.textContent = '🔒';
+          taBtnText.textContent = '助教專區';
+        }
+      } else {
+        const inputPwd = prompt("請輸入助教解鎖密碼：");
+        if (inputPwd === TA_PASSWORD) {
+          document.body.classList.add('is-ta-mode');
+          localStorage.setItem('is-ta-unlocked', 'true');
+          taLockIcon.textContent = '🔓';
+          taBtnText.textContent = '助教模式中';
+          alert("解鎖成功！助教專屬內容已於各頁面顯示，並在最下方新增教案與教材。");
+        } else if (inputPwd !== null) {
+          alert("密碼錯誤！");
+        }
+      }
+    });
+  </script>
 </body>
 </html>
